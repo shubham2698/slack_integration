@@ -1,6 +1,6 @@
 {
-    "Github Actions Workflow Run URL": "value1",
-    "Test Reports": "value2",
-    "Github Branch": "value3",
-    "Github Repo": "value4"
+    "Github Actions Workflow Run URL": "https://github.com/shubham2698/slack_integration/actions/",
+    "Test Reports": "https://github.com/shubham2698/slack_integration/actions/",
+    "Github Branch": "https://github.com/shubham2698/slack_integration/actions/",
+    "Github Repo": "https://github.com/shubham2698/slack_integration/actions/"
 }
