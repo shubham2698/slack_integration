@@ -3,19 +3,10 @@
       {
         "type": "section",
         "fields": [
-            {
-                "type": "mrkdwn",
-                "text": "*Github Action Workflow Run:*\nhttps://github.com/github_repository/actions/runs/github_run_id"
-            },
-            {
-                "type": "mrkdwn",
-                "text": "*Test Reports:*\ntest_reports"
-            },
-            {
-                "type": "mrkdwn",
-                "text": "*Branch Name:*\ngithub_branch_name"
-            }
+          { "type": "mrkdwn", "text": "*Github Action Workflow Run:* https://github.com/your_github_repository/actions/runs/your_github_run_id" },
+          { "type": "mrkdwn", "text": "*Test Reports:* test_reports" },
+          { "type": "mrkdwn", "text": "*Branch Name:* your_github_branch_name" }
         ]
       }
     ]
-}  
+  }
