@@ -15,12 +15,8 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Replace Json Payload With Variables
-        env:
-          JSON_FILE_PATH: ./payload-slack-content.json
         run: |
-          sed -i "s|var1|REPLACED_VAR1|g" $JSON_FILE_PATH
-          sed -i "s|var2|REPLACED_VAR2|g" $JSON_FILE_PATH
-          sed -i "s|var3|REPLACED_VAR3|g" $JSON_FILE_PATH
+          sed -i "s|var1|REPLACED_VAR1|g" payload-slack-content.json
 
       - name: Show updated JSON
-        run: echo $JSON_FILE_PATH
+        run: echo payload-slack-content.json
