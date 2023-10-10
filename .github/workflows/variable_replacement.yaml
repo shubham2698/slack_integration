@@ -1,0 +1,25 @@
+name: Generate Dynamic Payload
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  replace-values:
+    runs-on: ubuntu-latest
+    env:
+      JSON_PAYLOAD_PATH: payload-slack-content.json
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      
+      - name: Replace Json Payload With Variables
+        env:
+          JSON_PAYLOAD_PATH: payload-slack-content.json
+        run: |
+          sed -i "s|github_repository|${{ github.repository }}|g; s|github_run_id|${{ github.run_id }}|g; s|github_branch_name|${{ github.ref_name }}|g" $JSON_PAYLOAD_PATH
+
+      - name: Show updated JSON
+        run: cat $JSON_PAYLOAD_PATH

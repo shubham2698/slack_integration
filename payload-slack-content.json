@@ -1,5 +1,5 @@
 {
-    "Github Repository": "var1",
-    "Github Branch": "var2",
-    "Github Run ID": "var3"
+    "Github Action Workflow Run": "https://github.com/github_repository/actions/runs/github_run_id",
+    "Test Reports": "test_reports",
+    "Branch Name": "github_branch_name"
 }
