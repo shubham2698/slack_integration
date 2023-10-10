@@ -18,4 +18,4 @@ jobs:
         env:
           env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          JSON_FILE_PATH: ./payload-slack-content.json
+          JSON_FILE_PATH: payload-slack-content.json
