@@ -19,8 +19,8 @@ jobs:
           JSON_PAYLOAD_PATH: payload-slack-content.json
         run: |
           sed -i "s|var1|${{ github.repository }}|g" $JSON_PAYLOAD_PATH
-          sed -i "s|var1|${{ github.ref_name }}|g" $JSON_PAYLOAD_PATH
-          sed -i "s|var1|${{ github.run_id }}|g" $JSON_PAYLOAD_PATH
+          sed -i "s|var2|${{ github.ref_name }}|g" $JSON_PAYLOAD_PATH
+          sed -i "s|var3|${{ github.run_id }}|g" $JSON_PAYLOAD_PATH
 
       - name: Show updated JSON
         env:
