@@ -16,7 +16,7 @@ jobs:
       
       - name: Replace Json Payload With Variables
         run: |
-          sed -i "s|var1|REPLACED_VAR1|g" payload-slack-content.json
+          sed -i "s|var1|${{ github.repository }}|g" payload-slack-content.json
 
       - name: Show updated JSON
-        run: echo payload-slack-content.json
+        run: cat payload-slack-content.json
