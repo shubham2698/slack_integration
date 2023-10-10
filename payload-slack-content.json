@@ -5,15 +5,15 @@
         "fields": [
             {
                 "type": "mrkdwn",
-                "text": "*Github Action Workflow Run:* https://github.com/github_repository/actions/runs/github_run_id"
+                "text": "*Github Action Workflow Run:*\nhttps://github.com/github_repository/actions/runs/github_run_id"
             },
             {
                 "type": "mrkdwn",
-                "text": "*Test Reports:* test_reports"
+                "text": "*Test Reports:*\ntest_reports"
             },
             {
                 "type": "mrkdwn",
-                "text": "*Branch Name:* github_branch_name"
+                "text": "*Branch Name:*\ngithub_branch_name"
             }
         ]
       }
