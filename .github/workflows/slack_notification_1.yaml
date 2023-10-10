@@ -23,4 +23,4 @@ jobs:
           sed -i "s|var3|REPLACED_VAR3|g" $JSON_FILE_PATH
 
       - name: Show updated JSON
-        run: cat $JSON_FILE_PATH
+        run: echo $JSON_FILE_PATH
