@@ -2,7 +2,7 @@ const fs = require('fs');
 const { IncomingWebhook } = require('@slack/webhook');
 
 async function sendSlackMessage(message) {
-  const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK);
+  const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL);
   await webhook.send(message);
 }
 

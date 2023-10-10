@@ -16,5 +16,5 @@ jobs:
       - name: Run Slack Notification Action
         uses: docker://shubham261998/slack_integration:latest
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL: "${{ secrets.SLACK_WEBHOOK_URL }}"
           JSON_FILE_PATH: payload-slack-content.json
