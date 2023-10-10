@@ -4,7 +4,7 @@
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": "*Github Action Workflow Run:* <https://github.com/github_repository/actions/runs/github_run_id>"
+          "text": "*Github Action Workflow Run:* https://github.com/github_repository/actions/runs/github_run_id"
         }
       },
       {
