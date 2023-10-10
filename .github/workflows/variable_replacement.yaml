@@ -1,4 +1,4 @@
-name: Generate Dynamic Payload
+name: Send Slack Notification With Dynamic Payload
 
 on:
   push:
@@ -21,3 +21,11 @@ jobs:
 
       - name: Show updated JSON
         run: cat $JSON_PAYLOAD_PATH
+
+      - name: Send custom JSON data to Slack workflow
+        id: slack
+        uses: slackapi/slack-github-action@v1.24.0
+        with:
+          payload-file-path: $JSON_PAYLOAD_PATH
+        env:
+          SLACK_WEBHOOK_URL: "${{ secrets.SLACK_WEBHOOK_URL }}"
