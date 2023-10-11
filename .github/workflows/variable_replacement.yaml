@@ -16,7 +16,7 @@ jobs:
       - name: Send Slack Notification
         uses: ./.github/actions/slack_notification/
         with:
-          GITHUB_WORKFLOW_URL: 'https://github.com/${{ github.GITHUB_REPOSITORY }}/actions/runs/${{ env.GITHUB_ACTION_RUN_ID }}''
+          GITHUB_WORKFLOW_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           GITHUB_BRANCH: "${{ github.ref_name }}"
           TEST_REPORTS_LINK: "${{ github.run_id }}"
         env:
