@@ -1,17 +1,8 @@
 {
-    "GITHUB_WORKFLOW_URL": "workflow_url",
+    "GITHUB_WORKFLOW_URL": "https://github.com/github_repo/actions/runs/run_id",
     "GITHUB_BRANCH": "github_branch",
     "TEST_REPORTS_LINK": "test_report_link"
 }
-
-
-
-
-
-
-
-
-
 
 
 
