@@ -38,7 +38,7 @@ runs:
       shell: bash
 
     - name: Show updated JSON
-      run: cat inputs.JSON_PAYLOAD_PATH
+      run: cat util/payload-slack-content.json
       shell: bash
     
     - name: Send custom JSON data to Slack workflow
