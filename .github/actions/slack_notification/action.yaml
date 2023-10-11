@@ -17,10 +17,6 @@ inputs:
     description: 'github_run_id'
     required: true
     default: ''
-  # SLACK_BOT_URL:
-  #   description: 'slack bot url'
-  #   required: true
-  #   default: ''
 runs:
   using: 'composite'
   steps:
@@ -32,20 +28,12 @@ runs:
     - name: Show updated JSON
       run: cat util/reusable-payload.json
       shell: bash
-    
-    # - name: Send custom JSON data to Slack workflow
-    #   id: slack
-    #   uses: slackapi/slack-github-action@v1.24.0
-    #   with:
-    #     payload-file-path: util/reusable-payload.json
 
     - name: Run the script
       run: |
         npm install axios
         node index.js
       shell: 'bash'
-      # env:
-      #   SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK_URL }}
       
 
 

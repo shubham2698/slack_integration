@@ -5,7 +5,7 @@
         "block_id": "section1",
         "text": {
           "type": "mrkdwn",
-          "text": "*GitHub Actions Workflow Run URL*\nhttps://github.com/your_github_repo/actions/runs/run_id"
+          "text": "*GitHub Actions Workflow Run URL:*\nhttps://github.com/your_github_repo/actions/runs/run_id"
         }
       },
       {
@@ -13,7 +13,7 @@
         "block_id": "section2",
         "text": {
           "type": "mrkdwn",
-          "text": "*Test Reports*\nTest Reports (won't actually work as no standard tests ran)"
+          "text": "*Test Reports:*\nTest Reports (won't actually work as no standard tests ran)"
         }
       },
       {
@@ -21,7 +21,7 @@
         "block_id": "section3",
         "text": {
           "type": "mrkdwn",
-          "text": "*Branch Name*\ngithub_branch"
+          "text": "*Branch Name:*\ngithub_branch"
         }
       }
     ]
