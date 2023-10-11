@@ -22,11 +22,11 @@ runs:
   steps:
     - name: Replace Json Payload With Variables
       run: |
-          sed -i "s|github_repo|${{inputs.GITHUB_REPOSITORY}}|g; s|github_branch|${{inputs.GITHUB_BRANCH}}|g; s|test_report_link|${{inputs.TEST_REPORTS_LINK}}|g; s|run_id|${{inputs.GITHUB_RUN_ID}}|g" util/reusable-payload.json
+          sed -i "s|github_repo|${{inputs.GITHUB_REPOSITORY}}|g; s|github_branch|${{inputs.GITHUB_BRANCH}}|g; s|test_report_link|${{inputs.TEST_REPORTS_LINK}}|g; s|run_id|${{inputs.GITHUB_RUN_ID}}|g" util/slack-notification/reusable-payload.json
       shell: bash
 
     - name: Show updated JSON
-      run: cat util/reusable-payload.json
+      run: cat util/slack-notification/reusable-payload.json
       shell: bash
 
     - name: Run the script
