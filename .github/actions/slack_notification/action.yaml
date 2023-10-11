@@ -32,6 +32,9 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
     - name: Replace Json Payload With Variables
       run: |
           sed -i "s|github_repository|inputs.GITHUB_REPO|g; s|github_run_id|inputs.GITHUB_RUN_ID|g; s|github_branch|inputs.GITHUB_BRANCH|g" payload-slack-content.json
