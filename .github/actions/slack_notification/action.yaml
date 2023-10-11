@@ -41,6 +41,7 @@ runs:
 
     - name: Run the script
       run: node index.js
+      shell: 'bash'
       # env:
       #   SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK_URL }}
       
