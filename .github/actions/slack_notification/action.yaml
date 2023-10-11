@@ -22,18 +22,18 @@ runs:
   steps:
     - name: Replace Json Payload With Variables
       run: |
-          sed -i "s|github_repo|${{inputs.GITHUB_REPOSITORY}}|g; s|github_branch|${{inputs.GITHUB_BRANCH}}|g; s|test_report_link|${{inputs.TEST_REPORTS_LINK}}|g; s|run_id|${{inputs.GITHUB_RUN_ID}}|g" util/payload-slack-content.json
+          sed -i "s|github_repo|${{inputs.GITHUB_REPOSITORY}}|g; s|github_branch|${{inputs.GITHUB_BRANCH}}|g; s|test_report_link|${{inputs.TEST_REPORTS_LINK}}|g; s|run_id|${{inputs.GITHUB_RUN_ID}}|g" util/reusable-payload.json
       shell: bash
 
     - name: Show updated JSON
-      run: cat util/payload-slack-content.json
+      run: cat util/reusable-payload.json
       shell: bash
     
     - name: Send custom JSON data to Slack workflow
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
       with:
-        payload-file-path: util/payload-slack-content.json
+        payload-file-path: util/reusable-payload.json
       
 
 
