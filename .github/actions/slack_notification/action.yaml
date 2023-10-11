@@ -13,10 +13,10 @@ inputs:
     description: 'github_run_id'
     required: true
     default: 'No value passed'
-  JOSN_PAYLOAD_PATH:
-    description: 'json payload file path'
-    required: true
-    default: 'No value passed'
+  # JOSN_PAYLOAD_PATH:
+  #   description: 'json payload file path'
+  #   required: true
+  #   default: 'No value passed'
   # SLACK_BOT_TOKEN:
   #   description: 'slackbot token'
   #   required: true
@@ -45,7 +45,7 @@ runs:
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
       with:
-        payload-file-path: "inputs.JOSN_PAYLOAD_PATH"
+        payload-file-path: payload-slack-content.json
       
 
 

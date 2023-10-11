@@ -9,8 +9,6 @@ on:
 jobs:
   replace-values:
     runs-on: ubuntu-latest
-    env:
-      JSON_PAYLOAD_PATH: payload-slack-content.json
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -21,6 +19,5 @@ jobs:
           GITHUB_REPO: "https://github.com/${{ github.repository }}"
           GITHUB_BRANCH: "${{ github.ref_name }}"
           GITHUB_RUN_ID: "${{ github.run_id }}"
-          JOSN_PAYLOAD_PATH: "payload-slack-content.json"
         env:
           SLACK_WEBHOOK_URL: "${{ secrets.SLACK_WEBHOOK_URL }}"
