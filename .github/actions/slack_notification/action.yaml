@@ -1,0 +1,55 @@
+name: Slack Notification Using payload
+description: Using common json payload template send the notification to slack
+inputs:
+  GITHUB_REPO:
+    description: 'github_repo'
+    required: true
+    default: 'No value passed'
+  GITHUB_BRANCH:
+    description: 'github_branch'
+    required: true
+    default: 'No value passed'
+  GITHUB_RUN_ID:
+    description: 'github_run_id'
+    required: true
+    default: 'No value passed'
+  JOSN_PAYLOAD_PATH:
+    description: 'json payload file path'
+    required: true
+    default: 'No value passed'
+  # SLACK_BOT_TOKEN:
+  #   description: 'slackbot token'
+  #   required: true
+  #   default: 'No value passed'
+  # channel-id:
+  #   description: 'channel id to post'
+  #   required: true
+  #   default: 'No value passed'
+  # slack-message:
+  #   description: 'channel id to post'
+  #   required: true
+  #   default: 'No value passed'
+runs:
+  using: 'composite'
+  steps:
+    - name: Replace Json Payload With Variables
+      run: |
+          sed -i "s|github_repository|inputs.GITHUB_REPO|g; s|github_run_id|inputs.GITHUB_RUN_ID|g; s|github_branch|inputs.GITHUB_BRANCH|g" inputs.JOSN_PAYLOAD_PATH
+      shell: bash
+
+    - name: Show updated JSON
+      run: cat inputs.JSON_PAYLOAD_PATH
+      shell: bash
+    
+    - name: Send custom JSON data to Slack workflow
+      id: slack
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        payload-file-path: "./inputs.JOSN_PAYLOAD_PATH"
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+
+
+
+    
