@@ -34,7 +34,7 @@ runs:
   steps:
     - name: Replace Json Payload With Variables
       run: |
-          sed -i "s|github_repository|inputs.GITHUB_REPO|g; s|github_run_id|inputs.GITHUB_RUN_ID|g; s|github_branch|inputs.GITHUB_BRANCH|g" inputs.JOSN_PAYLOAD_PATH
+          sed -i "s|github_repository|inputs.GITHUB_REPO|g; s|github_run_id|inputs.GITHUB_RUN_ID|g; s|github_branch|inputs.GITHUB_BRANCH|g" payload-slack-content.json
       shell: bash
 
     - name: Show updated JSON
