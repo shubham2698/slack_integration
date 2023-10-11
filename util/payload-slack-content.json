@@ -1,7 +1,7 @@
 {
-    "GITHUB_REPO": "github_repository",
+    "GITHUB_WORKFLOW_URL": "workflow_url",
     "GITHUB_BRANCH": "github_branch",
-    "GITHUB_RUN_ID": "github_run_id"
+    "TEST_REPORTS_LINK": "test_report_link"
 }
 
 
