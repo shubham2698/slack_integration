@@ -1,17 +1,28 @@
 {
-    "type": "section",
-    "fields": [
+    "blocks": [
       {
-        "type": "mrkdwn",
-        "text": "*Github Actions Workflow Run URL*\nhttps://github.com/github_repo/actions/run_id"
+        "type": "section",
+        "block_id": "section1",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*GitHub Actions Workflow Run URL*\nhttps://github.com/your_github_repo/actions/runs/your_run_id"
+        }
       },
       {
-        "type": "mrkdwn",
-        "text": "*Test Reports*\nTest Reports (won't acutally work as no standard tests ran)"
+        "type": "section",
+        "block_id": "section2",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*Test Reports*\nTest Reports (won't actually work as no standard tests ran)"
+        }
       },
       {
-        "type": "mrkdwn",
-        "text": "*Branch Name*\ngithub_branch"
+        "type": "section",
+        "block_id": "section3",
+        "text": {
+          "type": "mrkdwn",
+          "text": "*Branch Name*\ngithub_branch"
+        }
       }
     ]
-}
+  }
