@@ -13,10 +13,10 @@ inputs:
     description: 'github_run_id'
     required: true
     default: 'No value passed'
-  JOSN_PAYLOAD_PATH:
-    description: 'json payload file path'
-    required: true
-    default: 'No value passed'
+  # JOSN_PAYLOAD_PATH:
+  #   description: 'json payload file path'
+  #   required: true
+  #   default: 'No value passed'
   # SLACK_BOT_TOKEN:
   #   description: 'slackbot token'
   #   required: true
@@ -34,7 +34,7 @@ runs:
   steps:
     - name: Replace Json Payload With Variables
       run: |
-          sed -i "s|github_repository|inputs.GITHUB_REPO|g; s|github_run_id|inputs.GITHUB_RUN_ID|g; s|github_branch|inputs.GITHUB_BRANCH|g" inputs.JSON_PAYLOAD_PATH
+          sed -i "s|github_repository|inputs.GITHUB_REPO|g; s|github_run_id|inputs.GITHUB_RUN_ID|g; s|github_branch|inputs.GITHUB_BRANCH|g" util/payload-slack-content.json
       shell: bash
 
     - name: Show updated JSON
@@ -45,7 +45,7 @@ runs:
       id: slack
       uses: slackapi/slack-github-action@v1.24.0
       with:
-        payload-file-path: inputs.JSON_PAYLOAD_PATH
+        payload-file-path: util/payload-slack-content.json
       
 
 
