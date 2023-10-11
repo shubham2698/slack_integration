@@ -40,7 +40,9 @@ runs:
     #     payload-file-path: util/reusable-payload.json
 
     - name: Run the script
-      run: node index.js
+      run: |
+        npm install axios
+        node index.js
       shell: 'bash'
       # env:
       #   SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK_URL }}

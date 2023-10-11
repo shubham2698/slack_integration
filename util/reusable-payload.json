@@ -5,7 +5,7 @@
         "block_id": "section1",
         "text": {
           "type": "mrkdwn",
-          "text": "*GitHub Actions Workflow Run URL*\nhttps://github.com/your_github_repo/actions/runs/your_run_id"
+          "text": "*GitHub Actions Workflow Run URL*\nhttps://github.com/your_github_repo/actions/runs/run_id"
         }
       },
       {
