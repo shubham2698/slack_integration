@@ -2,7 +2,7 @@
     "text": "Posting Failure for Codefresh Step testing purposes",
     "attachments": [
       {
-        "color": "${{ env.ATTACHMENT_COLOR }}",
+        "color": "danger",
         "blocks": [
           {
             "type": "header",
