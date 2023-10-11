@@ -17,6 +17,10 @@ inputs:
     description: 'github_run_id'
     required: true
     default: ''
+  # SLACK_BOT_URL:
+  #   description: 'slack bot url'
+  #   required: true
+  #   default: ''
 runs:
   using: 'composite'
   steps:
@@ -37,8 +41,8 @@ runs:
 
     - name: Run the script
       run: node index.js
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      # env:
+      #   SLACK_WEBHOOK_URL: ${{ inputs.SLACK_WEBHOOK_URL }}
       
 
 
