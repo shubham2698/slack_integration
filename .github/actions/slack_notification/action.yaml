@@ -46,8 +46,7 @@ runs:
       uses: slackapi/slack-github-action@v1.24.0
       with:
         payload-file-path: "./inputs.JOSN_PAYLOAD_PATH"
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      
 
 
 
