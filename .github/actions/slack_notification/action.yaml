@@ -32,7 +32,7 @@ runs:
     - name: Run the script
       run: |
         npm install axios
-        node index.js
+        node util/slack-notification/index.js
       shell: 'bash'
       
 
