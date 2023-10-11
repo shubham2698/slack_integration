@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  replace-values:
+  send-slack-notification:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code

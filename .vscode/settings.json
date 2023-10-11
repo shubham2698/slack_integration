@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-action.json": "file:///home/shubham/lacework/slack_integration/.github/actions/slack_notification/action.yaml"
+    }
+}
