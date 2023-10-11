@@ -1,37 +1,17 @@
 {
-    "text": "Posting Failure for Codefresh Step testing purposes",
-    "attachments": [
+    "type": "section",
+    "fields": [
       {
-        "color": "danger",
-        "blocks": [
-          {
-            "type": "header",
-            "text": {
-              "type": "plain_text",
-              "text": "Post a Pipeline Failure - DRY_RUN - N"
-            }
-          },
-          {
-            "type": "divider"
-          },
-          {
-            "type": "section",
-            "fields": [
-              {
-                "type": "mrkdwn",
-                "text": "*Github Actions Workflow Run URL*\nhttps://github.com/github_repo/actions/run_id"
-              },
-              {
-                "type": "mrkdwn",
-                "text": "*Test Reports*\nTest Reports (won't acutally work as no standard tests ran)"
-              },
-              {
-                "type": "mrkdwn",
-                "text": "*Branch Name*\ngithub_branch"
-              }
-            ]
-          }
-        ]
+        "type": "mrkdwn",
+        "text": "*Github Actions Workflow Run URL*\nhttps://github.com/github_repo/actions/run_id"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Test Reports*\nTest Reports (won't acutally work as no standard tests ran)"
+      },
+      {
+        "type": "mrkdwn",
+        "text": "*Branch Name*\ngithub_branch"
       }
     ]
-  }
+}
