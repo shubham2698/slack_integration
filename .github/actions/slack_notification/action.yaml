@@ -18,7 +18,7 @@ runs:
   steps:
     - name: Replace Json Payload With Variables
       run: |
-          sed -i "s|workflow_url|${{inputs.GITHUB_REPO}}|g; s|github_branch|${{inputs.GITHUB_BRANCH}}|g; s|test_report_link|${{inputs.TEST_REPORTS_LINK}}|g" util/payload-slack-content.json
+          sed -i "s|workflow_url|${{inputs.GITHUB_WORKFLOW_URL}}|g; s|github_branch|${{inputs.GITHUB_BRANCH}}|g; s|test_report_link|${{inputs.TEST_REPORTS_LINK}}|g" util/payload-slack-content.json
       shell: bash
 
     - name: Show updated JSON
