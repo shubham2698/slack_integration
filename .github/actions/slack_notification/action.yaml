@@ -29,11 +29,16 @@ runs:
       run: cat util/reusable-payload.json
       shell: bash
     
-    - name: Send custom JSON data to Slack workflow
-      id: slack
-      uses: slackapi/slack-github-action@v1.24.0
-      with:
-        payload-file-path: util/reusable-payload.json
+    # - name: Send custom JSON data to Slack workflow
+    #   id: slack
+    #   uses: slackapi/slack-github-action@v1.24.0
+    #   with:
+    #     payload-file-path: util/reusable-payload.json
+
+    - name: Run the script
+      run: node index.js
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       
 
 
