@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Send Slack Notification
-        uses: ../actions/slack_notification
+        uses: .github/actions/slack_notification/
         with:
           GITHUB_REPO: "https://github.com/${{ github.repository }}"
           GITHUB_BRANCH: "${{ github.ref_name }}"
