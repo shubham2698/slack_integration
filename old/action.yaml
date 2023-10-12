@@ -1,0 +1,29 @@
+name: Slack Notification Using payload
+description: Using common json payload template send the notification to slack
+inputs:
+  github_repository:
+    description: 'github_repository'
+    required: true
+    default: ${{ github.event.inputs.github_repository }}
+  github_branch:
+    description: 'github_branch'
+    required: true
+    default: ${{ github.event.inputs.github_branch }}
+  github_run_id:
+    description: 'github_run_id'
+    required: true
+    default: ${{ github.event.inputs.github_run_id }}
+  test_report_link:
+    description: 'TEST-REPORT-LINK'
+    required: true
+    default: ${{ github.event.inputs.test_report_link }}
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+      
+
+
+
+
+    

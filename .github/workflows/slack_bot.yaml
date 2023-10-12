@@ -13,45 +13,11 @@ jobs:
         - name: Checkout Code
           uses: actions/checkout@v4
 
-        - name: Replace variables
-          run: |
-            chmod +x ./report-to-slack/payload_modify.bash
-            ./report-to-slack/payload_modify.bash
-            cat ./report-to-slack/reusable-payload.json
-
-        - name: Post to a Slack channel
-          id: slack
-          uses: slackapi/slack-github-action@v1.24.0
+        - name: Run shell command and send to Slack
+          id: run_shell_command
+          uses: ./report-to-slack  
           with:
-            channel-id: 'C060KE84MB6'
-            slack-message: |
-              { 
-                "blocks": [
-                  {
-                    "type": "section",
-                    "block_id": "section1",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*GitHub Actions Workflow Run URL:*\nhttps://github.com/github_repo/actions/runs/run_id"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "block_id": "section2",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Test Reports:*\ntest_report_link"
-                    }
-                  },
-                  {
-                    "type": "section",
-                    "block_id": "section3",
-                    "text": {
-                      "type": "mrkdwn",
-                      "text": "*Branch Name:*\ngithub_branch"
-                    }
-                  }
-                ]
-              }
-          env:
-            SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+            payload_file_path: './report-to-slack/reusable-payload.json'
+            # shell_command: 'echo "Hello, world!"'
+            slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }} 
+            slack_channel_id: 'C060KE84MB6'

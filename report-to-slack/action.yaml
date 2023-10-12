@@ -1,29 +1,23 @@
-name: Slack Notification Using payload
-description: Using common json payload template send the notification to slack
+name: "Run Shell Command and Send to Slack"
+description: "Run a shell command and send the output to Slack."
 inputs:
-  github_repository:
-    description: 'github_repository'
+  payload_file_path:
+    description: "Path to the payload file"
     required: true
-    default: ${{ github.event.inputs.github_repository }}
-  github_branch:
-    description: 'github_branch'
+
+  # shell_command:
+  #   description: "Shell command to be executed"
+  #   required: true
+
+  slack_bot_token:
+    description: "Slack bot token"
     required: true
-    default: ${{ github.event.inputs.github_branch }}
-  github_run_id:
-    description: 'github_run_id'
+
+  slack_channel_id:
+    description: "Slack channel ID"
     required: true
-    default: ${{ github.event.inputs.github_run_id }}
-  test_report_link:
-    description: 'TEST-REPORT-LINK'
-    required: true
-    default: ${{ github.event.inputs.test_report_link }}
+
 
 runs:
   using: 'docker'
   image: 'Dockerfile'
-      
-
-
-
-
-    
