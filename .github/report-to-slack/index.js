@@ -1,7 +1,7 @@
 const axios = require('axios');
 const fs = require('fs');
 
-const payloadFilePath = process.env.PAYLOAD_FILE_PATH || 'util/slack-notification/reusable-payload.json';
+const payloadFilePath = process.env.PAYLOAD_FILE_PATH || 'reusable-payload.json';
 const slackWebhookURL = process.env.SLACK_WEBHOOK_URL;
 
 const sendSlackNotification = async () => {
