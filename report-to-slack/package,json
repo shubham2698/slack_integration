@@ -1,0 +1,16 @@
+{
+  "name": "run-shell-and-send-to-slack-action",
+  "version": "1.0.0",
+  "description": "GitHub Action to run a shell command and send the output to Slack",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/your-repository"
+  },
+  "author": "Shubham Joshi",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "axios": "^0.21.1"
+  }
+}
