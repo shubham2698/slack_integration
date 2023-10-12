@@ -1,8 +1,9 @@
 FROM node:latest
 
-COPY . /app
 WORKDIR /app
-COPY package.json ./
-RUN npm install
+COPY . /app
+
+RUN npm install @actions/core@1.2.4
+RUN npm install axios
 
 ENTRYPOINT ["node", "/app/index.js"]
