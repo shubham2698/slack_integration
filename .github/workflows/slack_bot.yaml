@@ -19,15 +19,39 @@ jobs:
             ./report-to-slack/payload_modify.bash
             cat ./report-to-slack/reusable-payload.json
 
-        - name: Read JSON payload from file
-          id: read_payload
-          run: |
-            echo "SLACK_PAYLOAD=$(cat report-to-slack/reusable-payload.json)" >> $GITHUB_ENV
         - name: Post to a Slack channel
           id: slack
           uses: slackapi/slack-github-action@v1.24.0
           with:
             channel-id: 'C060KE84MB6'
-            slack-message: ${{ steps.read_payload.outputs.payload }}
+            slack-message: |
+              { 
+                "blocks": [
+                  {
+                    "type": "section",
+                    "block_id": "section1",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*GitHub Actions Workflow Run URL:*\nhttps://github.com/github_repo/actions/runs/run_id"
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "block_id": "section2",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*Test Reports:*\ntest_report_link"
+                    }
+                  },
+                  {
+                    "type": "section",
+                    "block_id": "section3",
+                    "text": {
+                      "type": "mrkdwn",
+                      "text": "*Branch Name:*\ngithub_branch"
+                    }
+                  }
+                ]
+              }
           env:
             SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
