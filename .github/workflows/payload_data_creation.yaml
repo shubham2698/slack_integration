@@ -26,6 +26,8 @@ jobs:
       
       - name: Send Slack Notification
         uses: ./report-to-slack
+        with:
+          channel-id: 'C060KE84MB6'
         env:
           SLACK_BOT_TOKEN: "${{ secrets.SLACK_BOT_TOKEN }}"
           CHANNEL_ID: "C060KE84MB6"
