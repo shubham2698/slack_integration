@@ -13,7 +13,7 @@
         "block_id": "section2",
         "text": {
           "type": "mrkdwn",
-          "text": "*Test Reports:*\n test_report_link"
+          "text": "*Test Reports:*\ntest_report_link"
         }
       },
       {
@@ -21,7 +21,7 @@
         "block_id": "section3",
         "text": {
           "type": "mrkdwn",
-          "text": "*Branch Name:*\n github_branch"
+          "text": "*Branch Name:*\ngithub_branch"
         }
       }
     ]
