@@ -27,4 +27,3 @@ jobs:
           GITHUB_BRANCH: "${{ github.ref_name }}"
           GITHUB_RUN_ID: "${{ github.run_id }}"
           TEST_REPORTS_LINK: "value need to be given"
-          GITHUB_WORKFLOW: https://github.com/github_repo/actions/runs/run_id
