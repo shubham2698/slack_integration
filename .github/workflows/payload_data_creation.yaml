@@ -17,7 +17,7 @@ jobs:
         run: |
           chmod +x ./report-to-slack/payload_modify.bash
           ./report-to-slack/payload_modify.bash
-          cat ./report-to-slack/payload_modify.bash
+          cat ./reusable-payload.json
       
       - name: Send Slack Notification
         uses: ./.github/actions/slack_notification/
