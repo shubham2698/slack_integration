@@ -8,7 +8,7 @@ async function run() {
     // const shellCommand = core.getInput("shell_command");
 
     // Run the shell command
-    const { stdout, stderr } = await execShellCommand(shellCommand);
+    // const { stdout, stderr } = await execShellCommand(shellCommand);
 
     // Send the output to Slack
     await sendToSlack(stdout, stderr);
