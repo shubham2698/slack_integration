@@ -15,7 +15,7 @@ jobs:
 
         - name: Read JSON payload from file
           id: read_payload
-          run: echo "::set-output name=payload::$(cat ./report-to-slack/reusable-payload.json)"
+          run: echo "::set-output name=payload::$(cat report-to-slack/reusable-payload.json)"
 
         - name: Post to a Slack channel
           id: slack
