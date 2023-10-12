@@ -1,10 +1,6 @@
 name: Slack Notification Using payload
 description: Using common json payload template send the notification to slack
-inputs:
-  TEST_REPORTS_LINK:
-    description: 'github_run_id'
-    required: true
-    default: ''  
+  
 # runs:
 #   using: 'composite'
 #   steps:
