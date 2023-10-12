@@ -1,5 +1,5 @@
 #!/bin/bash
-git_repo=${env.GITHUB_REPOSITORY}
+git_repo=${GITHUB_REPOSITORY}
 git_branch=${GITHUB_BRANCH}
 test_rep_link=${TEST_REPORTS_LINK}
 run_id=${GITHUB_RUN_ID}
