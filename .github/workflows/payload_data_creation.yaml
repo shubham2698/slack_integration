@@ -17,11 +17,11 @@ jobs:
         run: |
           chmod +x ./report-to-slack/payload_modify.bash
           ./report-to-slack/payload_modify.bash
-          echo ./reusable-payload.json
+          cat ./report-to-slack/reusable-payload.json
       
       - name: Send Slack Notification
         uses: ./report-to-slack
         with:
-          INPUT_TEST_REPORTS_LINK: "TBD"
+          TEST_REPORTS_LINK: "TBD"
         env:
           SLACK_WEBHOOK_URL: "${{ secrets.SLACK_WEBHOOK_URL }}"
