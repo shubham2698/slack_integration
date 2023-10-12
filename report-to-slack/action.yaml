@@ -14,7 +14,7 @@ inputs:
     required: true
     default: 'default_value'
   test_report_link:
-    description: 'github_run_id'
+    description: 'TEST-REPORT-LINK'
     required: true
     default: ''
 
