@@ -5,11 +5,7 @@ const axios = require("axios");
 async function run() {
   try {
     const payloadFilePath = core.getInput("payload_file_path");
-
-    // Read the JSON data from the payload file
     const payload = readPayloadFromFile(payloadFilePath);
-
-    // Send the message to Slack
     await sendToSlack(payload);
   } catch (error) {
     core.setFailed(`Action failed with error: ${error.message}`);
@@ -32,7 +28,7 @@ async function sendToSlack(payload) {
   try {
     await axios.post("https://slack.com/api/chat.postMessage", {
       channel: channelId,
-      blocks: payload.blocks,  // Assuming the JSON payload has a "blocks" property
+      blocks: payload.blocks,
     }, {
       headers: {
         "Authorization": `Bearer ${botToken}`,
