@@ -13,7 +13,7 @@
         "block_id": "section2",
         "text": {
           "type": "mrkdwn",
-          "text": "*Test Reports:*\n${{ env.TEST_REPORTS_LINK }}"
+          "text": "*Test Reports:*\ntest_report_link"
         }
       },
       {
