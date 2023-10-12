@@ -1,3 +1,4 @@
 #!/bin/bash
 
-sed -i "s|github_repo|$GITHUB_REPOSITORY|g; s|github_branch|$GITHUB_BRANCH|g; s|test_report_link|$TEST_REPORTS_LINK|g; s|run_id|$GITHUB_RUN_ID|g" ./report-to-slack/reusable-payload.json
+# sed -i "s|github_repo|$GITHUB_REPOSITORY|g; s|github_branch|$GITHUB_BRANCH|g; s|test_report_link|$TEST_REPORTS_LINK|g; s|run_id|$GITHUB_RUN_ID|g" ./report-to-slack/reusable-payload.json
+perl -pi -e 's|github_repo|my_github_repo|g; s|github_branch|my_github_branch|g; s|test_report_link|my_test_report_link|g; s|run_id|my_run_id|g' file.txt
