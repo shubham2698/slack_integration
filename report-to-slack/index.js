@@ -7,10 +7,10 @@ async function run() {
     const payloadFilePath = core.getInput("payload_file_path");
 
     // Read the JSON data from the payload file
-    const message = readPayloadFromFile(payloadFilePath);
+    const payload = readPayloadFromFile(payloadFilePath);
 
     // Send the message to Slack
-    await sendToSlack(message);
+    await sendToSlack(payload);
   } catch (error) {
     core.setFailed(`Action failed with error: ${error.message}`);
   }
@@ -25,14 +25,14 @@ function readPayloadFromFile(filePath) {
   }
 }
 
-async function sendToSlack(message) {
+async function sendToSlack(payload) {
   const botToken = core.getInput("slack_bot_token");
   const channelId = core.getInput("slack_channel_id");
 
   try {
     await axios.post("https://slack.com/api/chat.postMessage", {
       channel: channelId,
-      text: JSON.stringify(message, null, 2), // Convert JSON to a formatted string
+      blocks: payload.blocks,  // Assuming the JSON payload has a "blocks" property
     }, {
       headers: {
         "Authorization": `Bearer ${botToken}`,
