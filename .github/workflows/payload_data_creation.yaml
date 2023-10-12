@@ -27,4 +27,5 @@ jobs:
       - name: Send Slack Notification
         uses: ./report-to-slack
         env:
-          SLACK_WEBHOOK_URL: "${{ secrets.SLACK_WEBHOOK_URL }}"
+          SLACK_BOT_TOKEN: "${{ secrets.SLACK_BOT_TOKEN }}"
+          CHANNEL_ID: "C060KE84MB6"
