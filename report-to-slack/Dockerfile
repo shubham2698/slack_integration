@@ -1,5 +1,5 @@
 FROM node:latest
-
+COPY package.json /app
 COPY . /app
 WORKDIR /app
 
