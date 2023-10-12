@@ -17,7 +17,7 @@ jobs:
         run: |
           chmod +x ./report-to-slack/payload_modify.bash
           ./report-to-slack/payload_modify.bash
-          echo ./reusable-payload.json
+          echo ./report-to-slack/reusable-payload.json
         env:
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_BRANCH: ${{ github.ref_name }}
