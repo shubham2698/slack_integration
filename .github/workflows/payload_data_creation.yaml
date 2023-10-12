@@ -21,6 +21,7 @@ jobs:
       
       - name: Send Slack Notification
         uses: ./report-to-slack
+        with:
+          INPUT_TEST_REPORTS_LINK: "TBD"
         env:
-          TEST_REPORTS_LINK: "TBD"
           SLACK_WEBHOOK_URL: "${{ secrets.SLACK_WEBHOOK_URL }}"
