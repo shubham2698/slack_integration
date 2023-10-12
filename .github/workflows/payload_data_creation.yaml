@@ -19,10 +19,10 @@ jobs:
           ./report-to-slack/payload_modify.bash
           cat ./report-to-slack/reusable-payload.json
         env:
-          github-repository: ${{ github.repository }}
-          github-branch: ${{ github.ref_name }}
-          github-run-id: ${{ github.run_id }}
-          test-report-link: "TBD"
+          github_repository: ${{ github.repository }}
+          github_branch: ${{ github.ref_name }}
+          github_run_id: ${{ github.run_id }}
+          test_report_link: "TBD"
       
       - name: Send Slack Notification
         uses: ./report-to-slack
