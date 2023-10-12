@@ -13,7 +13,7 @@ inputs:
     description: 'github_run_id'
     required: true
     default: 'default_value'
-  TEST_REPORTS_LINK:
+  TEST_REPORT_LINK:
     description: 'github_run_id'
     required: true
     default: 'default_value'  
