@@ -21,7 +21,7 @@
         "block_id": "section3",
         "text": {
           "type": "mrkdwn",
-          "text": "*Branch Name:*\ngithub_branch"
+          "text": "*Branch Name:*\n github_branch"
         }
       }
     ]
