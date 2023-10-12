@@ -13,6 +13,10 @@ jobs:
         - name: Checkout Code
           uses: actions/checkout@v4
 
+        - name: Read JSON payload from file
+          id: read_payload
+          run: echo "::set-output name=payload::$(cat ./report-to-slack/reusable-payload.json)"
+
         - name: Post to a Slack channel
           id: slack
           uses: slackapi/slack-github-action@v1.24.0
@@ -22,6 +26,6 @@ jobs:
             # You can pass in multiple channels to post to by providing a comma-delimited list of channel IDs.
             channel-id: 'C060KE84MB6'
             # For posting a simple plain text message
-            slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+            slack-message: ${{ steps.read_payload.outputs.payload }}
           env:
             SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
