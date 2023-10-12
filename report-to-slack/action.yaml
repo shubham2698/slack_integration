@@ -16,7 +16,7 @@ inputs:
   TEST_REPORT_LINK:
     description: 'github_run_id'
     required: true
-    default: 'default_value'  
+    default: ${{ github.event.inputs.TEST_REPORT_LINK }} 
 # runs:
 #   using: 'composite'
 #   steps:
