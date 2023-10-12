@@ -1,43 +1,38 @@
+const fs = require("fs");
 const core = require("@actions/core");
-const exec = require("child_process").exec;
 const axios = require("axios");
 
 async function run() {
   try {
     const payloadFilePath = core.getInput("payload_file_path");
-    // const shellCommand = core.getInput("shell_command");
 
-    // Run the shell command
-    // const { stdout, stderr } = await execShellCommand(shellCommand);
+    // Read the JSON data from the payload file
+    const message = readPayloadFromFile(payloadFilePath);
 
-    // Send the output to Slack
-    await sendToSlack(stdout, stderr);
+    // Send the message to Slack
+    await sendToSlack(message);
   } catch (error) {
     core.setFailed(`Action failed with error: ${error.message}`);
   }
 }
 
-async function execShellCommand(command) {
-  return new Promise((resolve, reject) => {
-    exec(command, (error, stdout, stderr) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve({ stdout, stderr });
-      }    // const shellCommand = core.getInput("shell_command");
-    });
-  });
+function readPayloadFromFile(filePath) {
+  try {
+    const data = fs.readFileSync(filePath, "utf8");
+    return JSON.parse(data);
+  } catch (error) {
+    throw new Error(`Error reading payload file: ${error.message}`);
+  }
 }
 
-async function sendToSlack(stdout, stderr) {
+async function sendToSlack(message) {
   const botToken = core.getInput("slack_bot_token");
   const channelId = core.getInput("slack_channel_id");
-  const message = `Shell Command Output:\n\`\`\`${stdout}\`\`\`\nErrors:\n\`\`\`${stderr}\`\`\``;
 
   try {
     await axios.post("https://slack.com/api/chat.postMessage", {
       channel: channelId,
-      text: message,
+      text: JSON.stringify(message, null, 2), // Convert JSON to a formatted string
     }, {
       headers: {
         "Authorization": `Bearer ${botToken}`,
