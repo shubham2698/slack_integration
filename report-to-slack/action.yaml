@@ -16,7 +16,7 @@ inputs:
   TEST_REPORT_LINK:
     description: 'github_run_id'
     required: true
-    default: 'default_value'
+    default: ${{ github.events.inputs.test_report_link }}
 
 runs:
   using: 'docker'
