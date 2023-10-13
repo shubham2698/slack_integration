@@ -13,6 +13,9 @@ jobs:
         - name: Checkout Code
           uses: actions/checkout@v4
 
+        - name: Set color based on the previous step
+          run: echo "STATUS_COLOR=$(if [ $? -eq 0 ]; then echo '#36a64f'; else echo '#E92020'; fi)" >> $GITHUB_ENV
+
         - name: payload modify
           run: |
             chmod +x ./report-to-slack/payload_modify.bash
@@ -23,9 +26,7 @@ jobs:
             github_branch: ${{ github.ref_name }}
             github_run_id: ${{ github.run_id }}
             test_report_link: "TBD"
-        
-        - name: Set success flag based on the previous step
-          run: echo "IS_SUCCESSFUL=$(if [ $? -eq 0 ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_ENV
+            status_color: ${{ env.STATUS_COLOR }}
 
         - name: Run shell command and send to Slack
           id: run_shell_command
