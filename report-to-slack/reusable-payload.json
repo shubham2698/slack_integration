@@ -1,5 +1,4 @@
 {
-    "color": "status_color",
     "blocks": [
       {
         "type": "section",
@@ -7,7 +6,8 @@
         "text": {
           "type": "mrkdwn",
           "text": "*GitHub Actions Workflow Run URL:*\nhttps://github.com/github_repo/actions/runs/run_id"
-        }
+        },
+        "color": "status_color"
       },
       {
         "type": "section",
@@ -15,7 +15,8 @@
         "text": {
           "type": "mrkdwn",
           "text": "*Test Reports:*\ntest_report_link"
-        }
+        },
+        "color": "status_color"
       },
       {
         "type": "section",
@@ -23,7 +24,8 @@
         "text": {
           "type": "mrkdwn",
           "text": "*Branch Name:*\ngithub_branch"
-        }
+        },
+        "color": "status_color"
       }
     ]
   }
