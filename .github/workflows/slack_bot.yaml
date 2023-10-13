@@ -23,6 +23,9 @@ jobs:
             github_branch: ${{ github.ref_name }}
             github_run_id: ${{ github.run_id }}
             test_report_link: "TBD"
+        
+        - name: Set success flag based on the previous step
+          run: echo "IS_SUCCESSFUL=$(if [ $? -eq 0 ]; then echo 'true'; else echo 'false'; fi)" >> $GITHUB_ENV
 
         - name: Run shell command and send to Slack
           id: run_shell_command

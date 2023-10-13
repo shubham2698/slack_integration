@@ -25,6 +25,19 @@ function readPayloadFromFile(filePath) {
 async function sendToSlack(payload) {
   const botToken = core.getInput("slack_bot_token");
   const channelId = core.getInput("slack_channel_id");
+  const determineColor = (isSuccessful) => {
+    return isSuccessful ? 'good' : 'danger';
+  };
+
+  const isSuccessful = process.env.IS_SUCCESSFUL === 'true';
+  const color = determineColor(isSuccessful);
+
+  payload.attachments = [
+    {
+        color: color,
+        text: isSuccessful ? 'Workflow completed successfully' : 'Workflow failed'
+    }
+];
 
   try {
     await axios.post("https://slack.com/api/chat.postMessage", {
