@@ -11,18 +11,7 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout Code
-          uses: actions/checkout@v4
-
-        - name: payload modify
-          run: |
-            chmod +x ./report-to-slack/payload_modify.bash
-            ./report-to-slack/payload_modify.bash
-            cat ./report-to-slack/reusable-payload.json
-          env:
-            github_repository: ${{ github.repository }}
-            github_branch: ${{ github.ref_name }}
-            github_run_id: ${{ github.run_id }}
-            test_report_link: "TBD"
+          uses: actions/checkout@v4          
 
         - name: Run shell command and send to Slack
           id: run_shell_command
@@ -31,3 +20,8 @@ jobs:
             payload_file_path: './report-to-slack/reusable-payload.json'
             slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }} 
             slack_channel_id: 'C060KE84MB6'
+          env:
+            github_repository: ${{ github.repository }}
+            github_branch: ${{ github.ref_name }}
+            github_run_id: ${{ github.run_id }}
+            test_report_link: "TBD"
