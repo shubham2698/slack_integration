@@ -1,35 +1,42 @@
-{
-    "blocks": [
+  {
+    "text": "Posting Success For Github Actions",
+    "attachments": [
       {
-        "type": "section",
-        "block_id": "section1",
-        "text": {
-          "type": "mrkdwn",
-          "text": "*GitHub Actions Workflow Run URL:*\nhttps://github.com/github_repo/actions/runs/run_id"
-        }
-      },
-      {
-        "type": "section",
-        "block_id": "section2",
-        "text": {
-          "type": "mrkdwn",
-          "text": "*Test Reports:*\ntest_report_link"
-        }
-      },
-      {
-        "type": "section",
-        "block_id": "section3",
-        "text": {
-          "type": "mrkdwn",
-          "text": "*Branch Name:*\ngithub_branch"
-        }
-      },
-      {
-        "type": "context",
-        "elements": [
+        "color": "status_color",
+        "blocks": [
           {
-            "type": "mrkdwn",
-            "text": ":status_color: *Status:*"
+            "type": "header",
+            "text": {
+              "type": "plain_text",
+              "text": "Post a Pipeline Failure - DRY_RUN - N"
+            }
+          },
+          {
+            "type": "divider"
+          },
+          {
+            "type": "section",
+            "block_id": "section1",
+            "text": {
+              "type": "mrkdwn",
+              "text": "*GitHub Actions Workflow Run URL:*\nhttps://github.com/github_repo/actions/runs/run_id"
+            }
+          },
+          {
+            "type": "section",
+            "block_id": "section2",
+            "text": {
+              "type": "mrkdwn",
+              "text": "*Test Reports:*\ntest_report_link"
+            }
+          },
+          {
+            "type": "section",
+            "block_id": "section3",
+            "text": {
+              "type": "mrkdwn",
+              "text": "*Branch Name:*\ngithub_branch"
+            }
           }
         ]
       }
