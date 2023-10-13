@@ -32,12 +32,17 @@ async function sendToSlack(payload) {
   const isSuccessful = process.env.IS_SUCCESSFUL === 'true';
   const color = determineColor(isSuccessful);
 
-  payload.attachments = [
-    {
-        color: color,
-        text: isSuccessful ? 'Workflow completed successfully' : 'Workflow failed'
-    }
-];
+  const modifyPayload = (payload, isSuccessful) => {
+    const color = determineColor(isSuccessful);
+
+    payload.blocks.forEach((block) => {
+        if (block.type === 'section') {
+            block.color = color;
+        }
+    });
+
+    return payload;
+  };
 
   try {
     await axios.post("https://slack.com/api/chat.postMessage", {
