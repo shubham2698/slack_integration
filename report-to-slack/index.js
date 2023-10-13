@@ -33,17 +33,12 @@ async function sendToSlack(payload) {
   const color = determineColor(isSuccessful);
 
   const modifyPayload = (payload, isSuccessful) => {
-    const color = determineColor(isSuccessful);
+  const color = determineColor(isSuccessful);
 
-    payload.blocks.forEach((block) => {
-        if (block.type === 'section') {
-            block.color = color;
-        }
-    });
-
-    return payload;
-  };
-
+  payload.blocks.forEach((block) => {
+    block.color = color;
+  });
+  
   try {
     await axios.post("https://slack.com/api/chat.postMessage", {
       channel: channelId,
