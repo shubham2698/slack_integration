@@ -1,7 +1,6 @@
 const fs = require("fs");
 const core = require("@actions/core");
 const axios = require("axios");
-const { exec } = require('child_process');
 
 async function run() {
   try {
@@ -13,15 +12,6 @@ async function run() {
   }
 }
 
-exec('chmod +x ./report-to-slack/payload_modify.bash && ' +
-             './report-to-slack/payload_modify.bash && ' +
-             'cat ./report-to-slack/reusable-payload.json', (error) => {
-            if (error) {
-                console.error('Error executing shell commands:', error);
-                return;
-            }
-            console.log('Shell commands executed successfully');
-      });
 
 function readPayloadFromFile(filePath) {
   try {
