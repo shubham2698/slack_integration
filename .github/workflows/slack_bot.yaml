@@ -20,6 +20,10 @@ jobs:
             payload_file_path: './report-to-slack/reusable-payload.json'
             slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }} 
             slack_channel_id: 'C060KE84MB6'
+            github_repository: ${{ github.repository }}
+            github_branch: ${{ github.ref_name }}
+            github_run_id: ${{ github.run_id }}
+            test_report_link: "TBD"
           env:
             github_repository: ${{ github.repository }}
             github_branch: ${{ github.ref_name }}
