@@ -12,9 +12,9 @@ jobs:
       steps:
         - name: Checkout Code
           uses: actions/checkout@v4 
-                   
+
         - name: send to payload to slack
-          uses: ./.github/actions/my-composite-action 
+          uses: ./.github/actions/report-to-slack 
           with:
             payload-file-path: "./report-to-slack/reusable-payload.json"
             channel-id: "C06168TBVT8"
