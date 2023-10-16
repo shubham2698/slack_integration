@@ -30,7 +30,7 @@ jobs:
 
         - name: Run shell command and send to Slack
           id: run_shell_command
-          uses: ./report-to-slack  
+          uses: slackapi/slack-github-action@v1.24.0 
           with:
             payload_file_path: './report-to-slack/reusable-payload.json'
             slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }} 
