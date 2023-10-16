@@ -1,5 +1,5 @@
 {
-  "Github Action Workflow Run URL": "https://github.com/${{ github.repository }}/actions/runs/${{ github.events.run_id }}",
+  "Github Action Workflow Run URL": "https://github.com/${GITHUB_REPOSITORY}/actions/runs/${{ github.events.run_id }}",
   "Test Reports": "pass_your_input_in_payload",
   "Github Branch": "${{ github.ref_name }}"
 }
