@@ -12,10 +12,11 @@ jobs:
       steps:
         - name: Checkout Code
           uses: actions/checkout@v4
-          env:
-            TEST_1: sample_value
-            TEST_2: sample_value
-            TEST_3: sample_value
+
+        - name: Install jq
+          run: |
+            sudo apt-get update
+            sudo apt-get install jq
 
         - name: payload modify through shell command
           run: |
@@ -23,7 +24,7 @@ jobs:
             for var in $(compgen -e | grep -E '^INPUT_ENV_'); do
               var_name=${var#"INPUT_ENV_"} 
               var_value=${!var}
-              jq --arg var_name "$var_name" --arg var_value "$var_value" '.[$var_name] = $var_value' output.json > temp.json
+              echo "$(jq --arg var_name "$var_name" --arg var_value "$var_value" '.[$var_name] = $var_value' output.json)" > temp.json
               mv temp.json output.json
             done
             cat ./output.json
