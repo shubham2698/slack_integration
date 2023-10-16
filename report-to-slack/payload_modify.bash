@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Load the JSON data from the file into a variable
-data=$(cat ./report-to-slack/reusable-payload.json)
+data=$(cat ./reusable-payload.json)
 
 # Start building the Slack Block Kit JSON
 blocks='{
-        "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+        "text": "sample_text",
         "blocks": [
           {
             "type": "section",
