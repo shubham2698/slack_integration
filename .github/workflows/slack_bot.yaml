@@ -11,15 +11,11 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout Code
-          uses: actions/checkout@v4
-
-        - name: Install jq
-          run: |
-            sudo apt-get update
-            sudo apt-get install jq
+          uses: actions/checkout@v4            
 
         - name: payload modify through shell command
           run: |
+            sudo apt-get install jq
             echo '{}' > ./output.json 
             for var in $(compgen -e | grep -E '^INPUT_ENV_'); do
               var_name=${var#"INPUT_ENV_"} 
