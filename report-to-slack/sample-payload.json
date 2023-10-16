@@ -1,0 +1,29 @@
+{
+    "text": "title_text",
+    "attachments": [
+      {
+        "color": "color_code",
+        "blocks": [
+          {
+            "type": "header",
+            "text": {
+              "type": "plain_text",
+              "text": "header_text"
+            }
+          },
+          {
+            "type": "divider"
+          },
+          {
+            "type": "section",
+            "fields": [
+              {
+                "type": "mrkdwn",
+                "text": "*Github Action*\nhttps://github.com/shubham2698/"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
