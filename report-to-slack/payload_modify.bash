@@ -2,7 +2,7 @@
 
 # Load the JSON data from the file into a variable
 data=$(cat ./report-to-slack/reusable-payload.json)
-
+while_loop='while IFS= read -r key value; do'
 # Start building the Slack Block Kit JSON
 blocks='{
     "text": "title_text",
@@ -24,7 +24,7 @@ blocks='{
         }
     ]
 }'
-while_loop='while IFS= read -r key value; do'
+
 # Iterate over the JSON data and add sections to the blocks
 while IFS="=" read -r key value; do
   key=$key
