@@ -1,5 +1,6 @@
 {
   "Github Action Workflow Run URL": "pass_your_input_in_payload",
   "Test Reports": "pass_your_input_in_payload",
-  "Github Branch": "pass_your_input_in_payload"
+  "Github Branch": "pass_your_input_in_payload",
+  "New Field Test": "pass_your_input_in_payload"
 }
