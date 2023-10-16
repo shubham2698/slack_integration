@@ -14,7 +14,9 @@ jobs:
           uses: actions/checkout@v4
 
         - name: Fail Step Testing
-          run: exit 1
+          run: |
+            ./payload_modify.bash
+          continue-on-error: true
 
         - name: Set color based on the previous step
           run: echo "STATUS_COLOR=$(if [ $? -eq 0 ]; then echo '36a64f'; else echo '#FF0000'; fi)" >> $GITHUB_ENV
