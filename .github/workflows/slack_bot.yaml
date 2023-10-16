@@ -33,6 +33,6 @@ jobs:
           uses: slackapi/slack-github-action@v1.24.0 
           with:
             payload_file_path: './report-to-slack/reusable-payload.json' 
-            slack_channel_id: 'C060KE84MB6'
+            channel-id: 'C060KE84MB6'
           env:
             SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
