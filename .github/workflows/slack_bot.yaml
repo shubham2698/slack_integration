@@ -18,18 +18,15 @@ jobs:
           run: |
             ./payload_modify.bash
             echo "::set-output name=failed::$(if [ $? -eq 0 ]; then echo 'false'; else echo 'true'; fi)"
-  
-        - name: Set color based on the previous step
-          run: |
-            if [[ "${{ steps.fail-step.outputs.failed }}" == "true" ]]; then
-              echo "STATUS_COLOR=#FF0000" >> $GITHUB_ENV
-            else
-              echo "STATUS_COLOR=36a64f" >> $GITHUB_ENV
-            fi
 
         - name: payload modify through shell command
           if: always()
           run: |
+            if [[ "${{ steps.fail-step.outputs.failed }}" == "true" ]]; then
+            echo "STATUS_COLOR=#FF0000" >> $GITHUB_ENV
+            else
+              echo "STATUS_COLOR=36a64f" >> $GITHUB_ENV
+            fi
             chmod +x ./report-to-slack/payload_modify.bash
             ./report-to-slack/payload_modify.bash               
 
