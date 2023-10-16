@@ -22,7 +22,7 @@ jobs:
           id: run_shell_command
           uses: slackapi/slack-github-action@v1.24.0 
           with:
-            payload-file-path: C
+            payload-file-path: ./report-to-slack/reusable-payload.json
             channel-id: 'C060KE84MB6'
             
           env:

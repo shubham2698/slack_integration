@@ -10,36 +10,33 @@ blocks='{
       "type": "header",
       "text": {
         "type": "plain_text",
-        "text": "Your Heading"
+        "text": "Pipeline Failure"
       }
     },
     {
       "type": "divider"
     }
-  ],
-  "text": "Your optional message text here"
+  ]
 }'
 
 # Iterate over the JSON data and add sections to the blocks
 while IFS= read -r line; do
-  heading=$(echo "$line" | jq -r '.heading')
-  link=$(echo "$line" | jq -r '.link')
+  key=$(echo "$line" | jq -r 'keys[0]')
+  value=$(echo "$line" | jq -r '.['"$key"']')
 
-  block='{
+  section_block='{
     "type": "section",
     "fields": [
       {
         "type": "mrkdwn",
-        "text": "*'$heading'*\n'$link'"
+        "text": "*'"$key"'*\n'"$value"'"
       }
     ]
   }'
 
-  blocks=$(jq --argjson block "$block" '.blocks += [$block]' <<< "$blocks")
-done <<< "$data"
+  # Add the section block to the blocks array
+  blocks=$(jq --argjson section_block "$section_block" '.blocks += [$section_block]' <<< "$blocks")
+done <<< "$(echo "$data" | jq -r 'to_entries | .[] | "\(.key) \(.value)"')"
 
-# Combine the Slack Block Kit JSON and save it to the original file
-echo "$blocks" > data.json
-
-# Print the updated Slack Block Kit JSON
-cat ./report-to-slack/reusable-payload.json
+# Print the generated Slack Block Kit JSON
+echo "$blocks"
