@@ -12,6 +12,10 @@ jobs:
       steps:
         - name: Checkout Code
           uses: actions/checkout@v4
+          env:
+            TEST_1: sample_value
+            TEST_2: sample_value
+            TEST_3: sample_value
 
         - name: payload modify through shell command
           run: |
