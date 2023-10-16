@@ -15,15 +15,13 @@ jobs:
 
         - name: payload modify through shell command
           run: |
-            sudo apt-get install jq
-            echo '{}' > ./output.json 
+            echo '{}' > output.json 
             for var in $(compgen -e | grep -E '^INPUT_ENV_'); do
               var_name=${var#"INPUT_ENV_"} 
               var_value=${!var}
-              echo "$(jq --arg var_name "$var_name" --arg var_value "$var_value" '.[$var_name] = $var_value' output.json)" > temp.json
-              mv temp.json output.json
+              jq --arg var_name "$var_name" --arg var_value "$var_value" '.[$var_name] = $var_value' output.json > temp.json && mv temp.json output.json
             done
-            cat ./output.json
+            cat output.json
           env:
             TEST_1: sample_value
             TEST_2: sample_value
