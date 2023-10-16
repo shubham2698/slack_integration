@@ -13,22 +13,19 @@ inputs:
   github_repository:
     description: 'Input github repository'
     required: true
-    default: ${{ github.event.inputs.github_repository }}
   github_branch:
     description: 'Input github branch'
     required: true
-    default: ${{ github.event.inputs.github_branch }}
   github_run_id:
     description: 'Input github branch'
     required: true
-    default: ${{ github.event.inputs.github_run_id }}
 
 runs:
   using: 'composite'
   steps:
     - name: payload modify through shell command
       run: |
-        sed -i "s|git_repo|$github_repository|g; s|git_branch|$github_branch|g; s|git_run_id|$github_run_id|g" "${{ inputs.payload-file-path }}"
+        sed -i "s|git_repo|${{ inputs.github_repository }}|g; s|git_branch|${{ inputs.github_branch }}|g; s|git_run_id|${{ inputs.github_run_id }} |g" "${{ inputs.payload-file-path }}"
         chmod +x ./report-to-slack/payload_modify.bash
         ./report-to-slack/payload_modify.bash
       shell: bash
