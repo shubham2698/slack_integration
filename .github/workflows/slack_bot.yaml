@@ -14,12 +14,18 @@ jobs:
           uses: actions/checkout@v4
 
         - name: Fail Step Testing
+          id: fail-step
           run: |
             ./payload_modify.bash
-          continue-on-error: true
-
+            echo "::set-output name=failed::$(if [ $? -eq 0 ]; then echo 'false'; else echo 'true'; fi)"
+  
         - name: Set color based on the previous step
-          run: echo "STATUS_COLOR=$(if [ $? -eq 0 ]; then echo '36a64f'; else echo '#FF0000'; fi)" >> $GITHUB_ENV
+          run: |
+            if [[ "${{ steps.fail-step.outputs.failed }}" == "true" ]]; then
+              echo "STATUS_COLOR=#FF0000" >> $GITHUB_ENV
+            else
+              echo "STATUS_COLOR=36a64f" >> $GITHUB_ENV
+            fi
 
         - name: payload modify through shell command
           run: |
