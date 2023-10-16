@@ -5,25 +5,17 @@ data=$(cat ./report-to-slack/reusable-payload.json)
 
 # Start building the Slack Block Kit JSON
 blocks='{
-    "text": "title_text",
-    "attachments": [
-        {
-            "color": "color_code",
-            "blocks": [
-                {
-                    "type": "header",
-                    "text": {
-                        "type": "plain_text",
-                        "text": "header_text"
-                    }
-                },
-                {
-                    "type": "divider"
-                }
-            ]
-        }
-    ]
-}'
+        "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
+        "blocks": [
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "GitHub Action build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+            }
+          }
+        ]
+      }'
 
 # Iterate over the JSON data and add sections to the blocks
 while IFS="=" read -r key value; do
