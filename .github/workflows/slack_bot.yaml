@@ -17,9 +17,13 @@ jobs:
           id: fail-step
           run: |
             ./payload_modify.bash
-            echo "::set-output name=failed::$(if [ $? -eq 0 ]; then echo 'false'; else echo 'true'; fi)"
+            if [ $? -eq 0 ]; then
+              echo "::set-output name=failed::false"
+            else
+              echo "::set-output name=failed::true"
+            fi
           continue-on-error: true
-
+          
         - name: payload modify through shell command
           if: always()
           run: |
