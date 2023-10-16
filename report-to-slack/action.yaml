@@ -14,13 +14,10 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout Code
-      uses: actions/checkout@v4 
-        
     - name: payload modify through shell command
       run: |
-        chmod +x ./report-to-slack/payload_modify.bash
-        ./report-to-slack/payload_modify.bash
+        chmod +x $payload-file-path
+        $payload-file-path
       shell: bash
             
     - name: send to payload to slack

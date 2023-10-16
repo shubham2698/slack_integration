@@ -16,7 +16,7 @@ jobs:
         - name: send to payload to slack
           uses: ./report-to-slack
           with:
-            payload-file-path: "./report-to-slack/reusable-payload.json"
+            payload-file-path: "./reusable-payload.json"
             channel-id: "C06168TBVT8"
             slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
             
