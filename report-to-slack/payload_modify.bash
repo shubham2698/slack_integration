@@ -27,18 +27,15 @@ blocks='{
 
 # Iterate over the JSON data and add sections to the blocks
 while IFS="=" read -r key value; do
-  section_block='{
-    "type": "section",
-    "fields": [
-    {
+  section_block='
+        {
             "type": "section",
             "text": {
               "type": "mrkdwn",
               "text": "*'"$key"'*\n'"$value"'"
             }
-          }
-      ]
-  }'
+        }
+      '
 
   # Add the section block to the blocks array
   blocks=$(jq --argjson section_block "$section_block" '.attachments[0].blocks += [$section_block]' <<< "$blocks")
