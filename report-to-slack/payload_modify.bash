@@ -5,6 +5,7 @@ data=$(cat ./report-to-slack/reusable-payload.json)
 
 # Start building the Slack Block Kit JSON
 blocks='{
+    "text": "Pipeline Failure Details",
   "blocks": [
     {
       "type": "header",
