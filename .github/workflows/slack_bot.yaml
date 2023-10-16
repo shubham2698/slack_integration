@@ -32,6 +32,7 @@ jobs:
           id: run_shell_command
           uses: slackapi/slack-github-action@v1.24.0 
           with:
-            payload_file_path: './report-to-slack/reusable-payload.json'
-            slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }} 
+            payload_file_path: './report-to-slack/reusable-payload.json' 
             slack_channel_id: 'C060KE84MB6'
+          env:
+            slack_bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
