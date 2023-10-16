@@ -3,11 +3,11 @@ name: Slack Bot
 on:
   push:
     branches:
-      - master
+      - dev
   workflow_dispatch:
 
 jobs:
-    end-slack-notification:
+    Send-slack-notification:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout Code
@@ -19,7 +19,6 @@ jobs:
             ./report-to-slack/payload_modify.bash
           
         - name: send to payload to slack
-          if: always()
           uses: slackapi/slack-github-action@v1.24.0 
           with:
             payload-file-path: ./report-to-slack/reusable-payload.json

@@ -1,0 +1,29 @@
+name: 'send-slack-notification'
+description: 'use this for sending json payload as notification to slack'
+inputs:
+  payload-file-path:
+    description: 'Input environment variable'
+    required: true
+  channel-id:
+    description: 'Input channel id'
+    required: true
+  slack-bot-token:
+    description: 'Slack bot token'
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: payload modify through shell command
+      run: |
+        chmod +x ./report-to-slack/payload_modify.bash
+        ./report-to-slack/payload_modify.bash
+            
+    - name: send to payload to slack
+      uses: slackapi/slack-github-action@v1.24.0 
+      with:
+        payload-file-path: $payload-file-path
+        channel-id: $channel-id
+      env:
+        SLACK_BOT_TOKEN: $slack-bot-token
+
