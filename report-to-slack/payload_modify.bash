@@ -11,7 +11,7 @@ while_loop='while IFS= read -r key value; do'
 payload='{
     "attachments": [
         {
-            "color": "#FF0000",
+            "color": "${{ env.STATUS_COLOR }}",
             "blocks": [
                 {
                     "type": "header",
@@ -43,5 +43,5 @@ payload+=']}]}'
 
 # Overwrite the JSON file with the updated payload
 echo "$payload" > "$json_file"
-
+echo $json_file
 echo "Payload updated and saved to $json_file"
