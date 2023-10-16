@@ -9,7 +9,10 @@ on:
 jobs:
     Send-slack-notification:
       runs-on: ubuntu-latest
-      steps:          
+      steps:
+        - name: Checkout Code
+          uses: actions/checkout@v4 
+                   
         - name: send to payload to slack
           uses: ./.github/actions/my-composite-action 
           with:
