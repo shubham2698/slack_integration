@@ -11,10 +11,10 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Checkout Code
-          uses: actions/checkout@v4
+          uses: actions/checkou@v4
 
         - name: Set color based on the previous step
-          run: echo "STATUS_COLOR=$(if [ $? -eq 0 ]; then echo '36a64f'; else echo 'E92020'; fi)" >> $GITHUB_ENV
+          run: echo "STATUS_COLOR=$(if [ $? -eq 0 ]; then echo '36a64f'; else echo '#FF0000'; fi)" >> $GITHUB_ENV
 
         - name: payload modify through shell command
           run: |
