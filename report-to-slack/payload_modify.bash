@@ -9,16 +9,16 @@ while_loop='while IFS= read -r key value; do'
 
 # Initialize the payload with the initial text
 payload='{
-  "text": "env.TITLE_TEXT",
+  "text": "demo_text",
     "attachments": [
         {
-            "color": "${{ env.ATTACHMENT_COLOR }}",
+            "color": "demo_color",
             "blocks": [
                 {
                     "type": "header",
                     "text": {
                         "type": "plain_text",
-                        "text": "${{ env.HEADER_TEXT }}"
+                        "text": "demo_header"
                     }
                 },
                 {
