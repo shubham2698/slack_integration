@@ -13,20 +13,11 @@ jobs:
         - name: Checkout Code
           uses: actions/checkout@v4
 
-        - name: Set color based on the previous step
-          run: echo "STATUS_COLOR=$(if [ $? -eq 0 ]; then echo '36a64f'; else echo 'E92020'; fi)" >> $GITHUB_ENV
-
         - name: payload modify
           run: |
             chmod +x ./report-to-slack/payload_modify.bash
             ./report-to-slack/payload_modify.bash
             cat ./report-to-slack/reusable-payload.json
-          env:
-            github_repository: ${{ github.repository }}
-            github_branch: ${{ github.ref_name }}
-            github_run_id: ${{ github.run_id }}
-            test_report_link: "TBD"
-            status_color: ${{ env.STATUS_COLOR }}
 
         - name: Run shell command and send to Slack
           id: run_shell_command
@@ -34,6 +25,6 @@ jobs:
           with:
             payload-file-path: './report-to-slack/reusable-payload.json' 
             channel-id: 'C060KE84MB6'
-            slack-message: "GitHub build result: ${{ job.status }}\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}"
+            
           env:
             SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
