@@ -12,7 +12,7 @@ payload='{
   "text": "demo_text",
     "attachments": [
         {
-            "color": "demo_color",
+            "color": "#008000",
             "blocks": [
                 {
                     "type": "header",
