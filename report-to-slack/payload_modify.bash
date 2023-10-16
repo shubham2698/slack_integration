@@ -9,7 +9,6 @@ while_loop='while IFS= read -r key value; do'
 
 # Initialize the payload with the initial text
 payload='{
-  "text": "demo_text",
     "attachments": [
         {
             "color": "#008000",
@@ -18,7 +17,7 @@ payload='{
                     "type": "header",
                     "text": {
                         "type": "plain_text",
-                        "text": "demo_header"
+                        "text": "Unit Test Result ( hard-coded )"
                     }
                 },
                 {

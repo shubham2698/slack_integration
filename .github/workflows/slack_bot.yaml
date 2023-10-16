@@ -13,12 +13,12 @@ jobs:
         - name: Checkout Code
           uses: actions/checkout@v4
 
-        - name: payload modify
+        - name: payload modify through shell command
           run: |
             chmod +x ./report-to-slack/payload_modify.bash
             ./report-to-slack/payload_modify.bash        
 
-        - name: Run shell command and send to Slack
+        - name: send to payload to slack
           id: run_shell_command
           uses: slackapi/slack-github-action@v1.24.0 
           with:
