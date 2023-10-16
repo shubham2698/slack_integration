@@ -27,14 +27,14 @@ payload='{
 # Construct Slack message sections dynamically
 while IFS='=' read -r key value; do
   payload+='{
-                    "type": "section",
-                    "fields": [
-                        {
-                            "type": "mrkdwn",
-                            "text": "*'$key'*\n'$value'"
-                        }
-                    ]
-                },'
+                "type": "section",
+                "fields": [
+                    {
+                        "type": "mrkdwn",
+                        "text": "*'$key'*\n'$value'"
+                    }
+                ]
+            },'
 done <<< "$sections"
 
 # Remove the trailing comma and add the closing brackets for the payload

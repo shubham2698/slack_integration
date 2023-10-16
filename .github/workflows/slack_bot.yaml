@@ -15,16 +15,15 @@ jobs:
 
         - name: payload modify through shell command
           run: |
-            echo '{}' > output.json 
-            for var in $(compgen -e | grep -E '^INPUT_'); do
-              var_name=${var#"INPUT_"} 
-              var_value=${!var}
-              jq --arg var_name "$var_name" --arg var_value "$var_value" '.[$var_name] = $var_value' output.json > temp.json && mv temp.json output.json
-            done
-            cat output.json
+            chmod +x ./report-to-slack/payload_modify.bash
+            ./report-to-slack/payload_modify.bash
+          
+        - name: send to payload to slack
+          if: always()
+          uses: slackapi/slack-github-action@v1.24.0 
+          with:
+            payload-file-path: ./report-to-slack/reusable-payload.json
+            channel-id: 'C060KE84MB6'
           env:
-            TEST_1: sample_value
-            TEST_2: sample_value
-            TEST_3: sample_value
-
+            SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
         
