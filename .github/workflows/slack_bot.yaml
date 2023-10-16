@@ -17,8 +17,8 @@ jobs:
           id: fail-step
           run: |
             ./payload_modify.bash
-            echo "::set-output name=failed::$(if [ $? -eq 0 ]; then echo 'false'; else echo 'true'; fi)"
-  
+          continue-on-error: true
+
         - name: Set color based on the previous step
           run: |
             if [[ "${{ steps.fail-step.outputs.failed }}" == "true" ]]; then
