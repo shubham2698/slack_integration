@@ -1,44 +1,51 @@
-const fs = require("fs");
-const core = require("@actions/core");
-const axios = require("axios");
+const fs = require('fs');
+const { IncomingWebhook } = require('@slack/webhook');
 
-async function run() {
-  try {
-    const payloadFilePath = core.getInput("payload_file_path");
-    const payload = readPayloadFromFile(payloadFilePath);
-    await sendToSlack(payload);
-  } catch (error) {
-    core.setFailed(`Action failed with error: ${error.message}`);
-  }
+async function sendSlackMessage(blocks) {
+  const webhook = new IncomingWebhook(process.env.SLACK_WEBHOOK_URL);
+  await webhook.send({
+    blocks: blocks
+  });
 }
 
-
-function readPayloadFromFile(filePath) {
+async function main() {
   try {
-    const data = fs.readFileSync(filePath, "utf8");
-    return JSON.parse(data);
-  } catch (error) {
-    throw new Error(`Error reading payload file: ${error.message}`);
-  }
-}
+    const jsonFilePath = process.env.JSON_FILE_PATH || 'data.json';
+    const rawData = fs.readFileSync(jsonFilePath);
+    const data = JSON.parse(rawData);
 
-async function sendToSlack(payload) {
-  const botToken = core.getInput("slack_bot_token");
-  const channelId = core.getInput("slack_channel_id");
-
-  try {
-    await axios.post("https://slack.com/api/chat.postMessage", {
-      channel: channelId,
-      blocks: payload.blocks,
-    }, {
-      headers: {
-        "Authorization": `Bearer ${botToken}`,
-        "Content-Type": "application/json",
+    let blocks = [
+      {
+        "type": "header",
+        "text": {
+          "type": "plain_text",
+          "text": "Your Heading"
+        }
       },
-    });
+      {
+        "type": "divider"
+      }
+    ];
+
+    for (const [heading, link] of Object.entries(data)) {
+      blocks.push(
+        {
+          "type": "section",
+          "fields": [
+            {
+              "type": "mrkdwn",
+              "text": `*${heading}*\n${link}`
+            }
+          ]
+        }
+      );
+    }
+
+    await sendSlackMessage(blocks);
   } catch (error) {
-    core.setFailed(`Failed to send message to Slack: ${error.message}`);
+    console.error('Error:', error.message);
+    process.exit(1);
   }
 }
 
-run();
+main();

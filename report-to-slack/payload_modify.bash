@@ -27,13 +27,10 @@ while IFS="=" read -r key value; do
 
   section_block='{
     "type": "section",
-    "text": "field1",
-    "fields": [
-      {
+      "text":{
         "type": "mrkdwn",
         "text": "*'"$key"'*\n'"$value"'"
       }
-    ]
   }'
 
   # Add the section block to the blocks array
