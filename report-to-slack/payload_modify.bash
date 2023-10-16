@@ -26,8 +26,8 @@ while IFS="=" read -r key value; do
   value=$value
 
   section_block='{
-    "type": "section",
-      "text":{
+    "type": "section_'"$key"'",
+      "fields":{
         "type": "mrkdwn",
         "text": "*'"$key"'*\n'"$value"'"
       }
