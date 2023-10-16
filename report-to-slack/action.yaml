@@ -10,6 +10,18 @@ inputs:
   slack-bot-token:
     description: 'Slack bot token'
     required: true
+  github_repository:
+    description: 'Input github repository'
+    required: true
+    default: ${{ github.event.inputs.github_repository }}
+  github_branch:
+    description: 'Input github branch'
+    required: true
+    default: ${{ github.event.inputs.github_branch }}
+  github_run_id:
+    description: 'Input github branch'
+    required: true
+    default: ${{ github.event.inputs.github_run_id }}
 
 runs:
   using: 'composite'

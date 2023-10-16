@@ -19,5 +19,7 @@ jobs:
             payload-file-path: "./report-to-slack/reusable-payload.json"
             channel-id: "C06168TBVT8"
             slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
-            
+            github_repository: ${{ github.repository }}
+            github_branch: ${{ github.ref_name }}
+            github_run_id: ${{ github.run_id }}
         
