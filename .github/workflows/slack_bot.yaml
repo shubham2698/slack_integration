@@ -28,9 +28,10 @@ jobs:
             fi
 
         - name: payload modify through shell command
+          if: always()
           run: |
             chmod +x ./report-to-slack/payload_modify.bash
-            ./report-to-slack/payload_modify.bash                  
+            ./report-to-slack/payload_modify.bash               
 
         - name: send to payload to slack
           if: always()
