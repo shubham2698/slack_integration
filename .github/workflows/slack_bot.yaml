@@ -22,8 +22,7 @@ jobs:
             else
               echo "::set-output name=failed::true"
             fi
-          continue-on-error: true
-          
+
         - name: payload modify through shell command
           if: always()
           run: |
