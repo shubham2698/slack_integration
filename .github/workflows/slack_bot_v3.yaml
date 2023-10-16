@@ -3,7 +3,7 @@ name: Slack Bot
 on:
   push:
     branches:
-      - master
+      - dev
   workflow_dispatch:
 
 jobs:
@@ -16,7 +16,7 @@ jobs:
         - name: send to payload to slack
           uses: ./report-to-slack
           with:
-            payload-file-path: "./report-to-slack/reusable-payload.json"
+            payload-file-path: "./report-to-slack/reusable-payload_v3.json"
             channel-id: "C06168TBVT8"
             slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
             github_repository: ${{ github.repository }}
