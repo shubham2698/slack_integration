@@ -42,4 +42,4 @@ done <<< "$data"
 echo "$blocks" > data.json
 
 # Print the updated Slack Block Kit JSON
-cat data.json
+cat ./report-to-slack/reusable-payload.json

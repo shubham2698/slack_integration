@@ -16,14 +16,13 @@ jobs:
         - name: payload modify
           run: |
             chmod +x ./report-to-slack/payload_modify.bash
-            ./report-to-slack/payload_modify.bash
-            cat ./report-to-slack/reusable-payload.json
+            ./report-to-slack/payload_modify.bash        
 
         - name: Run shell command and send to Slack
           id: run_shell_command
           uses: slackapi/slack-github-action@v1.24.0 
           with:
-            payload-file-path: './report-to-slack/reusable-payload.json' 
+            payload-file-path: C
             channel-id: 'C060KE84MB6'
             
           env:
