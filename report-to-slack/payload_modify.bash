@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Read the JSON file and extract key-value pairs
-json_file="./report-to-slack/reusable-payload.json"
+json_file="./report-to-slack/reusable-payload_v3.json"
 sections=$(jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' "$json_file")
 
 # Define the while loop string
