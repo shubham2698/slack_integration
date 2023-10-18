@@ -1,11 +1,9 @@
 #!/bin/bash
 
 # Read the JSON file and extract key-value pairs
-echo "${{ inputs.events.payload-file-path }}"
-echo "${{ github.event.inputs.events.payload-file-path }}"
+
 echo ${INPUT_payload-file-path}
-echo ${{INPUT_payload-file-path}}
-json_file=""
+json_file="${INPUT_payload-file-path}"
 sections=$(jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' "$json_file")
 
 # Define the while loop string
