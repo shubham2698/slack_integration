@@ -3,7 +3,7 @@ name: Slack Bot
 on:
   push:
     branches:
-      - dev
+      - master
   workflow_dispatch:
 
 jobs:
@@ -22,4 +22,6 @@ jobs:
             github_repository: ${{ github.repository }}
             github_branch: ${{ github.ref_name }}
             github_run_id: ${{ github.run_id }}
+          env:
+            COLOR_CODE: "#36a64f"
         

@@ -11,7 +11,7 @@ while_loop='while IFS= read -r key value; do'
 payload='{
     "attachments": [
         {
-            "color": "#36a64f",
+            "color": "${{ env.COLOR_CODE }}",
             "blocks": [
                 {
                     "type": "header",
