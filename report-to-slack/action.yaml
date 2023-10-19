@@ -27,7 +27,9 @@ runs:
     - name: List Environment Variables
       run: |
         echo "Listing Environment Variables:"
-        env
+        for key in "${!env[@]}"; do           
+          echo "$key=${env[$key]}"         
+        done
       shell: bash
 
     # - name: payload modify through shell command
