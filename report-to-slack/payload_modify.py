@@ -14,9 +14,6 @@ for var_name, var_value in os.environ.items():
 json_file = json.dumps(json_data)
 color_code = os.getenv("COLOR_CODE")
 
-
-with open(json_file, 'r') as file:
-    data = json.load(file)
     
 
 payload = {
