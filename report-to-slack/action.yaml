@@ -47,4 +47,5 @@ runs:
         channel-id: ${{ inputs.channel-id }}
       env:
         SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
+      working-directory: ${{ github.action_path }}
 
