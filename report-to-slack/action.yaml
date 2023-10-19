@@ -26,7 +26,7 @@ runs:
     - name: payload modify through shell command
       run: |
         chmod +x payload_modify.bash
-        ./payload_modify.bash ${{ inputs.payload-file-path }}
+        ./payload_modify.bash
       shell: bash
             
     - name: send to payload to slack
