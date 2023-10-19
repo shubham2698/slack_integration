@@ -27,7 +27,7 @@ runs:
       run: |
         sed -i "s|git_repo|${{ inputs.github_repository }}|g; s|git_branch|${{ inputs.github_branch }}|g; s|git_run_id|${{ inputs.github_run_id }} |g" "${{ inputs.payload-file-path }}"
         chmod +x ./payload_modify.bash
-        ./payload_modify.bash ${{ inputs.payload-file-path }}
+        ./payload_modify.bash
       shell: bash
             
     - name: send to payload to slack
