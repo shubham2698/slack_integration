@@ -22,4 +22,4 @@ jobs:
             COLOR_CODE: "#36a64f" 
             Github Action Workflow Run URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
             Test Reports: "TBD"
-            Github Branch: "${{ github.branch }}"
+            Github Branch: "${{ github.ref_name }}"
