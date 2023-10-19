@@ -27,7 +27,7 @@ payload='{
 
 # Construct Slack message sections dynamically
 while IFS='=' read -r key value; do
-  payload+='{
+  payload+=',{
                 "type": "section",
                 "fields": [
                     {
@@ -35,11 +35,10 @@ while IFS='=' read -r key value; do
                         "text": "*'$key'*\n'$value'"
                     }
                 ]
-            },'
+            }'
 done <<< "$sections"
 
 # Remove the trailing comma and add the closing brackets for the payload
-payload=${payload%,}
 payload+=']}]}'
 
 echo "$payload" > $json_file
