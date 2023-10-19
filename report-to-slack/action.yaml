@@ -25,14 +25,14 @@ runs:
   steps:
     - name: payload modify through shell command
       run: |
-        chmod +x "${{ github.action_path }}"./payload_modify.bash
-        "${{ github.action_path }}"./payload_modify.bash "${{ github.action_path }}${{ inputs.payload-file-path }}"
+        chmod +x ./payload_modify.bash
+        ./payload_modify.bash "${{ github.action_path }}${{ inputs.payload-file-path }}"
       shell: bash
             
     - name: send to payload to slack
       uses: slackapi/slack-github-action@v1.24.0 
       with:
-        payload-file-path: "./reusable-payload_v3.json"
+        payload-file-path: "${{ github.action_path }}${{ inputs.payload-file-path }}"
         channel-id: ${{ inputs.channel-id }}
       env:
         SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
