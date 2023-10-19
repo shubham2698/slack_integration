@@ -34,14 +34,14 @@ runs:
       uses: actions/checkout@v4
 
     - name: payload modify through shell command
-      working-directory: ${{github.action_path}}
       run: |
         pwd
         ls
         chmod +x ./payload_modify.bash
         ./payload_modify.bash $PAYLOAD_JSON
         ls
-      shell: bash      
+      shell: bash
+      working-directory: ${{github.action_path}}      
             
     - name: send to payload to slack
       uses: slackapi/slack-github-action@v1.24.0
