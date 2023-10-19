@@ -3,7 +3,7 @@ description: 'use this for sending json payload as notification to slack'
 inputs:
   payload-file-path:
     description: 'Input environment variable'
-    required: False
+    required: true
   channel-id:
     description: 'Input channel id'
     required: true
@@ -25,14 +25,14 @@ runs:
   steps:
     - name: payload modify through shell command
       run: |
-        chmod +x ./payload_modify.bash
-        ./payload_modify.bash "${{ github.action_path }}${{ inputs.payload-file-path }}"
+        chmod +x ./report-to-slack/payload_modify.bash
+        ./report-to-slack/payload_modify.bash ${{ inputs.payload-file-path }}
       shell: bash
             
     - name: send to payload to slack
       uses: slackapi/slack-github-action@v1.24.0 
       with:
-        payload-file-path: "${{ github.action_path }}${{ inputs.payload-file-path }}"
+        payload-file-path: ${{ inputs.payload-file-path }}
         channel-id: ${{ inputs.channel-id }}
       env:
         SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
