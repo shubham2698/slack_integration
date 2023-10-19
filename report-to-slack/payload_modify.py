@@ -33,7 +33,7 @@ payload = {
         }
     ]
 }
-
+section = {}
 for key, value in os.environ.items():
     if key.startswith("INPUT_") and value not in exclude_variables:
         key = key[len("INPUT_"):]
