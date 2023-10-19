@@ -26,8 +26,8 @@ runs:
 
     - name: payload modify through shell command
       run: |
-        chmod +x payload_modify.bash
-        ./payload_modify.bash
+        chmod +x ./report-to-slack/payload_modify.bash
+        ./report-to-slack/payload_modify.bash
       shell: bash
       working-directory: ${{ github.action_path }}
             
