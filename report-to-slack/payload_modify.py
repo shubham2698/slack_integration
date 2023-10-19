@@ -5,9 +5,11 @@ import os
 env_variables = os.environ
 
 json_data = {}
-for key, value in env_variables.items():
-    value = value.replace('"', '\\"')
-    json_data[key] = value
+for var_name, var_value in os.environ.items():
+    if var_name.startswith("INPUT_"):
+        input_name = var_name[len("INPUT_"):]
+        var_value = var_value.replace('"', '\\"')
+        json_data[input_name] = var_value
 
 json_file = json.dumps(json_data)
 color_code = os.getenv("COLOR_CODE")
