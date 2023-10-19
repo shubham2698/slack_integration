@@ -30,9 +30,6 @@ runs:
         echo "PAYLOAD_JSON=$payload_content >> $GITHUB_ENV"
       shell: bash
 
-    - name: Checkout Code
-      uses: actions/checkout@v4
-
     - name: payload modify through shell command
       run: |
         pwd
@@ -41,7 +38,7 @@ runs:
         ./payload_modify.bash $PAYLOAD_JSON
         ls
       shell: bash
-      working-directory: ${{github.action_path}}      
+      working-directory: $GITHUB_ACTION_PATH
             
     - name: send to payload to slack
       uses: slackapi/slack-github-action@v1.24.0
