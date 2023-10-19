@@ -10,7 +10,6 @@ for var_name, var_value in os.environ.items():
         var_value = var_value.replace('"', '\\"')
         json_data[input_name] = var_value
 
-json_data = json.dumps(json_data)
 color_code = os.getenv("COLOR_CODE")
 
     
