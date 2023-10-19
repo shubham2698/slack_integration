@@ -2,8 +2,7 @@
 
 # Read the JSON file and extract key-value pairs
 
-echo 
-json_file="$INPUT_PAYLOAD_FILE_PATH"
+json_file=$1
 sections=$(jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' "$json_file")
 
 # Define the while loop string
