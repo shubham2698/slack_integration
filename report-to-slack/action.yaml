@@ -42,7 +42,7 @@ runs:
     - name: send to payload to slack
       uses: slackapi/slack-github-action@v1.24.0
       with:
-        payload-file-path: ${{ inputs.payload-file-path }}
+        payload-file-path: "./recreated_payload.json"
         channel-id: ${{ inputs.channel-id }}
       env:
         SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}

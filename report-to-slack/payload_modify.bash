@@ -43,6 +43,4 @@ payload=${payload%,}
 payload+=']}]}'
 
 # Overwrite the JSON file with the updated payload
-echo "$payload" > "$json_file"
-echo $json_file
-echo "Payload updated and saved to $json_file"
+echo "$payload" > "recreated_payload.json"
