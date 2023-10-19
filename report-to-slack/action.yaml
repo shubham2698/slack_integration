@@ -25,9 +25,8 @@ runs:
   steps:
     - name: Store User Side Json
       run: |
-        # Read the contents of the payload.json file and store it in an environment variable
         payload_content=$(cat "${{ inputs.payload-file-path }}")
-        echo "PAYLOAD_JSON=$payload_content >> $GITHUB_ENV"
+        echo "PAYLOAD_JSON=$payload_content" >> $GITHUB_ENV
       shell: bash
 
     - name: payload modify through shell command
