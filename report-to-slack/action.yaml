@@ -23,18 +23,24 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Store User Side Json
+      run: |
+        # Read the contents of the payload.json file and store it in an environment variable
+        payload_content=$(cat "${{ inputs.payload-file-path }}")
+        echo "::set-env name=PAYLOAD_JSON::$payload_content"
+      shell: bash
+
     - name: payload modify through shell command
+      working-directory: ${{github.action_path}}
       run: |
         pwd
         ls
         chmod +x payload_modify.bash
-        ./payload_modify.bash "${{ inputs.payload-file-path }}"
-      shell: bash
-      working-directory: ${{github.action_path}}
-      
+        ./payload_modify.bash $PAYLOAD_JSON
+      shell: bash      
             
     - name: send to payload to slack
-      uses: slackapi/slack-github-action@v1.24.0 
+      uses: slackapi/slack-github-action@v1.24.0
       with:
         payload-file-path: ${{ inputs.payload-file-path }}
         channel-id: ${{ inputs.channel-id }}
