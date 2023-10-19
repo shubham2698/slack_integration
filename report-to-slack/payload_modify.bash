@@ -3,7 +3,7 @@
 # Read the JSON file and extract key-value pairs
 
 json_file="$1"
-sections=$(echo "$json_file" | jq -r 'to_entries | map("\(.key)=\(.value)") | .[]')
+sections=$(jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' "$json_file")
 
 # Define the while loop string
 while_loop='while IFS= read -r key value; do'
@@ -42,4 +42,4 @@ done <<< "$sections"
 payload=${payload%,}
 payload+=']}]}'
 
-echo "$payload" > "recreated_payload.json"
+echo "$payload" > $json_file
