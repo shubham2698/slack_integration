@@ -4,7 +4,7 @@ import os
 import re
 
 def is_camel_case(text):
-    pattern = r'^[a-z]+(?:[A-Z][a-z]*)*$'
+    pattern = r'^[a-zA-Z]+(\s+[a-zA-Z]+)*$'
     return bool(re.match(pattern, text))
 
 json_file_path = "payload.json"
