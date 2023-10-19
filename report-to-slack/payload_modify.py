@@ -36,7 +36,7 @@ for key, value in os.environ.items():
                 }
             ]
         }
-    payload["attachments"][0]["blocks"].append(section)
+        payload["attachments"][0]["blocks"].append(section)
 
 print(payload)
 
