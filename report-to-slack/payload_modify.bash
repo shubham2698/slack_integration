@@ -23,7 +23,7 @@ payload='{
                 },
                 {
                     "type": "divider"
-                },'
+                }'
 
 # Construct Slack message sections dynamically
 while IFS='=' read -r key value; do
@@ -38,7 +38,6 @@ while IFS='=' read -r key value; do
             }'
 done <<< "$sections"
 
-# Remove the trailing comma and add the closing brackets for the payload
 payload+=']}]}'
 
-echo "$payload" > $json_file
+echo "$payload" > "$json_file"
