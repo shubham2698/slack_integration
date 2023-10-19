@@ -29,7 +29,6 @@ runs:
         chmod +x ./report-to-slack/payload_modify.bash
         ./report-to-slack/payload_modify.bash
       shell: bash
-      working-directory: ${{ github.action_path }}
             
     - name: send to payload to slack
       uses: slackapi/slack-github-action@v1.24.0
