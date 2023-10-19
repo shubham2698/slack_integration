@@ -30,7 +30,7 @@ payload = {
 }
 
 for key, value in os.environ.items():
-    if is_camel_case(key):
+    if is_camel_case(key.replace(' ','')):
         section = {
             "type": "section",
             "fields": [
