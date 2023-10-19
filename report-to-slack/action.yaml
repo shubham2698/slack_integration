@@ -25,7 +25,6 @@ runs:
   steps:
     - name: Store User Side Json
       run: |
-        # Read the contents of the payload.json file and store it in an environment variable
         payload_content=$(cat "${{ inputs.payload-file-path }}")
         cat $payload_contents
       shell: bash
