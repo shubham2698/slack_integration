@@ -26,15 +26,14 @@ runs:
 
     - name: payload modify scripy
       run: |
-        chmod +x ./report-to-slack/payload_modify.bash
-        ./report-to-slack/payload_modify.bash ${{ inputs.payload-file-path }}
+        python ./report-to-slack/payload_modify.py
       shell: bash
             
-    - name: send to payload to slack
-      uses: slackapi/slack-github-action@v1.24.0
-      with:
-        payload-file-path: ${{ inputs.payload-file-path }}
-        channel-id: ${{ inputs.channel-id }}
-      env:
-        SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
+    # - name: send to payload to slack
+    #   uses: slackapi/slack-github-action@v1.24.0
+    #   with:
+    #     payload-file-path: ${{ inputs.payload-file-path }}
+    #     channel-id: ${{ inputs.channel-id }}
+    #   env:
+    #     SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
 
