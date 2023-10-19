@@ -42,5 +42,4 @@ done <<< "$sections"
 payload=${payload%,}
 payload+=']}]}'
 
-# Overwrite the JSON file with the updated payload
 echo "$payload" > "recreated_payload.json"

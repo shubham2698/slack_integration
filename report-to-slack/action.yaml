@@ -35,7 +35,7 @@ runs:
       run: |
         pwd
         ls
-        chmod +x payload_modify.bash
+        chmod +x ./payload_modify.bash
         ./payload_modify.bash $PAYLOAD_JSON
         ls
       shell: bash      
