@@ -26,11 +26,21 @@ runs:
 
     - name: List Environment Variables
       run: |
-        echo "Listing Environment Variables:"
-        for key in "${!env[@]}"; do           
-          echo "$key=${env[$key]}"         
+        env_json="{"
+
+        for key in "${!env[@]}"; do
+          # Exclude the COLOR_CODE variable
+          if [ "$key" != "COLOR_CODE" ]; then
+            env_json="$env_json\"$key\":\"${env[$key]}\","
+          fi
         done
+
+        env_json="${env_json%,}"
+        env_json="$env_json}"
+        echo $env_json
       shell: bash
+
+    
 
     # - name: payload modify through shell command
     #   run: |
