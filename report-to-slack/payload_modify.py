@@ -2,7 +2,7 @@ import json
 import sys
 import os
 
-json_data = {}
+env_variables = os.environ
 
 exclude_variables = [
     "pythonLocation",
@@ -13,7 +13,7 @@ exclude_variables = [
     "LD_LIBRARY_PATH"
 ]
 
-for var_name, var_value in os.environ.items():
+for var_name, var_value in env_variables.items():
     if var_name.startswith("INPUT_") and var_name not in exclude_variables:
         input_name = var_name[len("INPUT_"):]
         var_value = var_value.replace('"', '\\"')
