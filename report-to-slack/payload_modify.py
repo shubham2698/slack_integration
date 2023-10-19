@@ -4,8 +4,17 @@ import os
 
 json_data = {}
 
+exclude_variables = [
+    "pythonLocation",
+    "PKG_CONFIG_PATH",
+    "Python_ROOT_DIR",
+    "Python2_ROOT_DIR",
+    "Python3_ROOT_DIR",
+    "LD_LIBRARY_PATH"
+]
+
 for var_name, var_value in os.environ.items():
-    if var_name.startswith("INPUT_"):
+    if var_name.startswith("INPUT_") and var_name not in exclude_variables:
         input_name = var_name[len("INPUT_"):]
         var_value = var_value.replace('"', '\\"')
         json_data[input_name] = var_value
