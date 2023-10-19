@@ -2,7 +2,7 @@
 
 # Read the JSON file and extract key-value pairs
 
-json_file="reusable-payload_v3.json"
+json_file="$1"
 sections=$(jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' "$json_file")
 
 # Define the while loop string
