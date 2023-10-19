@@ -3,7 +3,7 @@ description: 'use this for sending json payload as notification to slack'
 inputs:
   payload-file-path:
     description: 'Input environment variable'
-    required: true
+    required: false
   channel-id:
     description: 'Input channel id'
     required: true
