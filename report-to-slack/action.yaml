@@ -28,16 +28,22 @@ runs:
       run: |
         env_json="{"
 
+        # Loop through environment variables
         for key in "${!env[@]}"; do
-          # Exclude the COLOR_CODE variable
+          # Check if the variable is not "COLOR_CODE" to exclude it
           if [ "$key" != "COLOR_CODE" ]; then
+            # Add the key-value pair to the JSON-like string
             env_json="$env_json\"$key\":\"${env[$key]}\","
           fi
         done
 
+        # Remove the trailing comma and close the JSON-like string
         env_json="${env_json%,}"
         env_json="$env_json}"
-        echo $env_json
+
+        # Print the JSON-like string
+        echo "$env_json"
+
       shell: bash
 
     
