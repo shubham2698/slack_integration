@@ -4,5 +4,6 @@ import os
 
 print("Script Execution Started")
 for key, value in os.environ.items():
-    print(f"{key}={value}")
+    if key.islower():
+        print(f"{key}={value}")
 
