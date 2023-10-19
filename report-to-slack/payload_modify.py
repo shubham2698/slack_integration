@@ -2,7 +2,7 @@ import json
 import sys
 import os
 
-env_variables = os.environ
+env_variables = os.environ.keys()
 json_data = {}
 exclude_variables = [
     "pythonLocation",
