@@ -13,23 +13,11 @@ exclude_variables = [
     "LD_LIBRARY_PATH"
 ]
 
-for var_name, var_value in os.environ.items():
-    if var_name.startswith("INPUT_"):
-        input_name = var_name[len("INPUT_"):]
-        # Escaping double quotes in the value
-        var_value = var_value.replace('"', '\\"')
-        json_data[input_name] = var_value
-
-json_data = json.dumps(json_data)
-
-color_code = os.getenv("COLOR_CODE")
-
-print(json_data)
 
 payload = {
     "attachments": [
         {
-            "color": f"{color_code}",
+            "color": f"#FF0000",
             "blocks": [
                 {
                     "type": "header",
@@ -46,16 +34,18 @@ payload = {
     ]
 }
 
-for key, value in json_data.items():
-    section = {
-        "type": "section",
-        "fields": [
-            {
-                "type": "mrkdwn",
-                "text": f"*{key}*\n{value}"
-            }
-        ]
-    }
+for key, value in os.environ.items():
+    if key.startswith("INPUT_") and value not in exclude_variables:
+        key = key[len("INPUT_"):]
+        section = {
+            "type": "section",
+            "fields": [
+                {
+                    "type": "mrkdwn",
+                    "text": f"*{key}*\n{value}"
+                }
+            ]
+        }
     payload["attachments"][0]["blocks"].append(section)
 
 print(payload)
