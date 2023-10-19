@@ -24,23 +24,16 @@ runs:
   using: 'composite'
   steps:
 
-    - name: List Environment Variables
+    - name: setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
+      run: python payload_modify.py
+
+    - name: payload modify through shell command
       run: |
-        json_data=$(for key in "${!env[@]}"; do
-          value="${env[$key]//\"/\\\"}"
-          echo -n "\"$key\":\"$value\", "
-        done)
-        json_data="{${json_data%,*}}"
-        echo $json_data
+        python ./report-to-slack/payload_modify.py
       shell: bash
-
-    
-
-    # - name: payload modify through shell command
-    #   run: |
-    #     chmod +x ./report-to-slack/payload_modify.bash
-    #     ./report-to-slack/payload_modify.bash "${{ inputs.payload-file-path }}"
-    #   shell: bash
             
     # - name: send to payload to slack
     #   uses: slackapi/slack-github-action@v1.24.0
