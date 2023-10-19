@@ -27,6 +27,8 @@ runs:
     - name: payload modify scripy
       run: |
         python ./report-to-slack/payload_modify.py
+        ls
+        cat ./payload.json
       shell: bash
             
     # - name: send to payload to slack

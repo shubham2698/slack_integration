@@ -2,8 +2,7 @@ import json
 import sys
 import os
 
-print("Script Execution Started")
-
+json_file_path = "payload.json"
 
 payload = {
     "attachments": [
@@ -38,5 +37,6 @@ for key, value in os.environ.items():
         }
         payload["attachments"][0]["blocks"].append(section)
 
-print(payload)
+with open(json_file_path, 'w') as json_file:
+    json.dump(payload, json_file, indent=4)
 
