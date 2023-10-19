@@ -25,23 +25,24 @@ runs:
   steps:
     - name: Store User Side Json
       run: |
+        # Read the contents of the payload.json file and store it in an environment variable
         payload_content=$(cat "${{ inputs.payload-file-path }}")
-        echo "PAYLOAD_JSON=$payload_content" >> $GITHUB_ENV
+        cat $payload_contents
       shell: bash
 
-    - name: payload modify through shell command
-      run: |
-        chmod +x payload_modify.bash
-        ./payload_modify.bash $PAYLOAD_JSON
-        cat "./recreated_payload.json"
-      shell: bash
-      working-directory: ${{ github.action_path }}
+    # - name: payload modify through shell command
+    #   run: |
+    #     chmod +x payload_modify.bash
+    #     ./payload_modify.bash $PAYLOAD_JSON
+    #     cat ./recreated_payload.json
+    #   shell: bash
+    #   working-directory: ${{ github.action_path }}
             
-    - name: send to payload to slack
-      uses: slackapi/slack-github-action@v1.24.0
-      with:
-        payload-file-path: "./recreated_payload.json"
-        channel-id: ${{ inputs.channel-id }}
-      env:
-        SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
+    # - name: send to payload to slack
+    #   uses: slackapi/slack-github-action@v1.24.0
+    #   with:
+    #     payload-file-path: "./recreated_payload.json"
+    #     channel-id: ${{ inputs.channel-id }}
+    #   env:
+    #     SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
 
