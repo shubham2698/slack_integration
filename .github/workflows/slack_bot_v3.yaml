@@ -20,7 +20,6 @@ jobs:
             slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
           env:
             COLOR_CODE: "#36a64f" 
-            github_repository: ${{ github.repository }}
-            github_branch: ${{ github.ref_name }}
-            github_run_id: ${{ github.run_id }}
-        
+            Github Action Workflow Run URL: "https://github.com/${{ github.ref_name }} /actions/runs/${{ github.run_id }}"
+            Test Reports: "TBD"
+            Github Branch: "${{ env.github_branch }}"

@@ -1,6 +1,11 @@
 import json
 import sys
 import os
+import re
+
+def is_camel_case(text):
+    pattern = r'^[a-z]+(?:[A-Z][a-z]*)*$'
+    return bool(re.match(pattern, text))
 
 json_file_path = "payload.json"
 
@@ -25,7 +30,7 @@ payload = {
 }
 
 for key, value in os.environ.items():
-    if key.islower():
+    if is_camel_case(key):
         section = {
             "type": "section",
             "fields": [
