@@ -25,6 +25,8 @@ runs:
   steps:
     - name: payload modify through shell command
       run: |
+        pwd
+        ls
         chmod +x payload_modify.bash
         ./payload_modify.bash
       shell: bash
