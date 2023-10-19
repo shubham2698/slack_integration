@@ -23,7 +23,7 @@ payload='{
                 },
                 {
                     "type": "divider"
-                }'
+                },'
 
 # Construct Slack message sections dynamically
 while IFS='=' read -r key value; do
