@@ -21,7 +21,7 @@ for var_name, var_value in os.environ.items():
 
 color_code = os.getenv("COLOR_CODE")
 
-    
+print(json_data)
 
 payload = {
     "attachments": [
