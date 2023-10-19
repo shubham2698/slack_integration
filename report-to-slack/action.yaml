@@ -37,6 +37,7 @@ runs:
         ls
         chmod +x payload_modify.bash
         ./payload_modify.bash $PAYLOAD_JSON
+        ls
       shell: bash      
             
     - name: send to payload to slack
