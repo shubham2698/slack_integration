@@ -3,7 +3,7 @@ import sys
 import os
 
 env_variables = os.environ
-
+json_data = {}
 exclude_variables = [
     "pythonLocation",
     "PKG_CONFIG_PATH",
