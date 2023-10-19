@@ -30,6 +30,9 @@ runs:
         echo "PAYLOAD_JSON=$payload_content >> $GITHUB_ENV"
       shell: bash
 
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
     - name: payload modify through shell command
       working-directory: ${{github.action_path}}
       run: |
