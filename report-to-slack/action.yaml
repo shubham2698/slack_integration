@@ -31,8 +31,8 @@ runs:
 
     - name: payload modify scripy
       run: |
-        chmod +x ./report-to-slack/payload_modify.py
-        ./report-to-slack/payload_modify.py ${{ inputs.payload-file-path }}
+        chmod +x ./report-to-slack/payload_modify.bash
+        ./report-to-slack/payload_modify.bash ${{ inputs.payload-file-path }}
       shell: bash
             
     # - name: send to payload to slack
