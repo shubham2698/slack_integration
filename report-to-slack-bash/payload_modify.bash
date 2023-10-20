@@ -5,7 +5,8 @@ json_data='{}'
 for var in $(compgen -e); do
     if [[ "$var" == SLACK_* ]]; then
         key="${var#SLACK_}"
-        json_data="$json_data,\"$key\":\"${!var}\""
+        json_data=$(echo "$json_data" | jq --arg key "$key" --arg value "$value" '. + {($key): $value}')
+done
     fi
 done
 
