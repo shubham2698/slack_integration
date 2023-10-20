@@ -6,7 +6,7 @@ import re
 print("Execution Started")
 
 for key, value in os.environ.items():
-    if key.startswith('INPUT_'):
+    if key.startswith('SLACK_'):
         print(f"{key}:{value}")
 
 def is_camel_case(text):
