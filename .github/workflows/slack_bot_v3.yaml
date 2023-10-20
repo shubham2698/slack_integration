@@ -14,12 +14,17 @@ jobs:
           uses: actions/checkout@v4 
 
         - name: send to payload to slack
-          uses: ./report-to-slack
-          with:
-            channel-id: "C06168TBVT8"
-            slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
-          env:
-            COLOR_CODE: "#36a64f" 
-            Github Action Workflow Run URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            Test Reports: "TBD"
-            Github Branch: "${{ github.ref_name }}"
+          run: |
+            python test_payload.py
+
+
+        # - name: send to payload to slack
+        #   uses: ./report-to-slack
+        #   with:
+        #     channel-id: "C06168TBVT8"
+        #     slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+        #   env:
+        #     COLOR_CODE: "#36a64f" 
+        #     Github Action Workflow Run URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+        #     Test Reports: "TBD"
+        #     Github Branch: "${{ github.ref_name }}"
