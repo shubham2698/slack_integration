@@ -15,7 +15,7 @@ jobs:
 
         - name: send to payload to slack
           run: |
-            python test_payload.py
+            python ./report-to-slack/test_payload.py
 
 
         # - name: send to payload to slack
