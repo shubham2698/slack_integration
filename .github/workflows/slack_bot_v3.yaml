@@ -15,6 +15,7 @@ jobs:
 
         - name: send to payload to slack
           run: |
+            env
             python ./report-to-slack/test_payload.py
 
 
