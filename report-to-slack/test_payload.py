@@ -1,3 +1,5 @@
 import os
 
-print(os.getenv('GITHUB_ENV'))
+env_file = os.getenv('GITHUB_ENV')
+
+print(env_file)
