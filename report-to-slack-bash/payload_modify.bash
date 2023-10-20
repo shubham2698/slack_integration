@@ -1,15 +1,50 @@
 #!/bin/bash
 
 json_data='{}'
-
+output_file="payload.json"
 for var in $(compgen -e); do
     if [[ "$var" == SLACK_* ]]; then
         key="${var#SLACK_}"
         json_data=$(echo "$json_data" | jq --arg key "$key" --arg value "${!var}" '. + {($key): $value}')
     fi
 done
-
 echo "$json_data"
+
+payload='{
+    "fallback": "${{ env.FALLBACK }}",
+    "attachments": [
+        {
+            "color": "${{ env.COLOR_CODE }}",
+            "blocks": [
+                {
+                    "type": "header",
+                    "text": {
+                        "type": "plain_text",
+                        "text": "${{ env.HEADER_TEXT }}"
+                    }
+                },
+                {
+                    "type": "divider"
+                }'
+
+keys=$(echo "$json_obj" | jq -r 'keys[]')
+
+for key in $keys; do
+    value=$(echo "$json_obj" | jq -r ".$key")
+    payload+=',{
+                "type": "section",
+                "fields": [
+                    {
+                        "type": "mrkdwn",
+                        "text": "*'$key'*\n'$value'"
+                    }
+                ]
+            }'
+done <<< "$sections"
+payload+=']}]}'
+echo $payload
+# echo "$payload" > "$output_file"
+
 
 # json_file="slack-payload-input.json"
 # sections=$(jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' "$json_file")
