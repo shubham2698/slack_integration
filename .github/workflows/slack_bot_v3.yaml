@@ -18,9 +18,6 @@ jobs:
           with:
             channel-id: "C06168TBVT8"
             slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
-            Github Action Workflow Run URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-            Test Reports: "TBD"
-            Github Branch: "${{ github.ref_name }}"
           env:
             COLOR_CODE: "#36a64f" 
             Github Action Workflow Run URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
