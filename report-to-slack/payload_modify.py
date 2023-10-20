@@ -27,6 +27,15 @@ payload = {
     ]
 }
 
+data = {}
+
+for key, value in os.environ.items():
+    if key.startswith('SLACK_'):
+        key=key[len("SLACK_"):].replace("_"," ")
+        data[key] = value
+
+print(data)
+
 for key, value in os.environ.items():
     if key.startswith('SLACK_'):
         key=key[len("SLACK_"):].replace("_"," ")
