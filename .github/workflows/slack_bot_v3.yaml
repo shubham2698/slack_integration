@@ -18,14 +18,11 @@ jobs:
           with:
             channel-id: "C06168TBVT8"
             slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
-            github_repository: "${{ github.repository }}"
-            github_branch: "${{ github.ref_name }}"
-            github_run_id: "${{ github.run_id }}"
-          # env:
-          #   COLOR_CODE: "#FF0000"
-          #   SLACK_GITHUB_ACTION_WORKFLOW_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          #   SLACK_TEST_REPORT: "TBD"
-          #   SLACK_GITHUB_BRANCH: "${{ github.ref_name }}"
-          #   FALLBACK: "Hawkeye Core GHA Test"
-          #   HEADER_TEXT: "Hawkeye Core GHA Test"
-          #   SLACK_GITHUB_AUTHOR: "${{ github.actor }}"
+          env:
+            COLOR_CODE: "#FF0000"
+            SLACK_GITHUB_ACTION_WORKFLOW_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            SLACK_TEST_REPORT: "TBD"
+            SLACK_GITHUB_BRANCH: "${{ github.ref_name }}"
+            FALLBACK: "Hawkeye Core GHA Test"
+            HEADER_TEXT: "Hawkeye Core GHA Test"
+            SLACK_GITHUB_AUTHOR: "${{ github.actor }}"
