@@ -1,8 +1,16 @@
 #!/bin/bash
 
+json_data='{}'
+
 for var in $(compgen -e); do
-    echo "$var=${!var}"
+    if [[ "$var" == SLACK_* ]]; then
+        key="${var#SLACK_}"
+        json_data="$json_data,\"$key\":\"${!var}\""
+    fi
 done
+
+json_data="{${json_data#,}}"
+echo "$json_data"
 
 # json_file="slack-payload-input.json"
 # sections=$(jq -r 'to_entries | map("\(.key)=\(.value)") | .[]' "$json_file")
