@@ -18,11 +18,11 @@ runs:
         chmod +x payload_modify.bash
         ./payload_modify.bash
             
-    # - name: send to payload to slack
-    #   uses: slackapi/slack-github-action@v1.24.0
-    #   with:
-    #     payload-file-path: "${{ github.action_path }}/payload.json"
-    #     channel-id: ${{ inputs.channel-id }}
-    #   env:
-    #     SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
+    - name: send to payload to slack
+      uses: slackapi/slack-github-action@v1.24.0
+      with:
+        payload-file-path: "${{ github.action_path }}/payload.json"
+        channel-id: ${{ inputs.channel-id }}
+      env:
+        SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
 

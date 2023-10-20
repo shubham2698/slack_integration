@@ -43,7 +43,7 @@ for key in $(echo "$json_data" | jq -r 'keys[]'); do
 done <<< "$sections"
 payload+=']}]}'
 echo $payload
-# echo "$payload" > "$output_file"
+echo "$payload" > "$output_file"
 
 
 # json_file="slack-payload-input.json"
