@@ -25,4 +25,4 @@ jobs:
             SLACK_GITHUB_BRANCH: "${{ github.ref_name }}"
             FALLBACK: "Hawkeye Core GHA Test"
             HEADER_TEXT: "Hawkeye Core GHA Test"
-            GITHUB_AUTHOR: "${{ github.actor }}"
+            SLACK_GITHUB_AUTHOR: "${{ github.actor }}"
