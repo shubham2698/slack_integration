@@ -27,10 +27,10 @@ payload='{
                     "type": "divider"
                 }'
 
-keys=$(echo "$json_obj" | jq -r 'keys[]')
 
-for key in $keys; do
-    value=$(echo "$json_obj" | jq -r ".$key")
+
+for key in $(echo "$json_data" | jq -r 'keys[]'); do
+    value=$(echo "$json_data" | jq -r ".$key")
     payload+=',{
                 "type": "section",
                 "fields": [
