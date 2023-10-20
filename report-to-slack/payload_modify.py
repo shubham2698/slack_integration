@@ -3,15 +3,7 @@ import sys
 import os
 import re
 
-print("Execution Started")
-
-for key, value in os.environ.items():
-    if key.startswith('SLACK_'):
-        print(f"{key}:{value}")
-
-def is_camel_case(text):
-    pattern = r'^[a-zA-Z]+(\s+[a-zA-Z]+)*$'
-    return bool(re.match(pattern, text))
+print("Creating Payload...")
 
 json_file_path = "payload.json"
 
@@ -36,7 +28,8 @@ payload = {
 }
 
 for key, value in os.environ.items():
-    if is_camel_case(key.replace(' ','')) and key.isupper() == False and ' ' in key:
+    if key.startswith('SLACK_'):
+        key=key[len("SLACK_"):].replace("_"," ")
         section = {
             "type": "section",
             "fields": [
@@ -48,6 +41,9 @@ for key, value in os.environ.items():
         }
         payload["attachments"][0]["blocks"].append(section)
 
+print("Payload Creation Completed")
+
 with open(json_file_path, 'w') as json_file:
     json.dump(payload, json_file, indent=4)
 
+print("Exported ./payload.json")
