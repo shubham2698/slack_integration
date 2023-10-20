@@ -7,7 +7,6 @@ inputs:
   slack-bot-token:
     description: 'Slack bot token'
     required: true
-
 runs:
   using: 'composite'
   steps:
@@ -15,7 +14,7 @@ runs:
     - name: payload modify scripy
       working-directory: ${{ github.action_path }}
       run: |
-        python payload_modify.py
+        python ${{ github.action_path }}/payload_modify.py
       shell: bash
             
     - name: send to payload to slack
