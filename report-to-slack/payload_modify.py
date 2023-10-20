@@ -3,7 +3,7 @@ import sys
 import os
 import re
 
-
+print("Execution Started")
 
 for key, value in os.environ.items():
     if key.startswith('INPUT_'):
