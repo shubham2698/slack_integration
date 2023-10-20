@@ -15,7 +15,7 @@ runs:
     - name: payload modify scripy
       working-directory: ${{ github.action_path }}
       run: |
-        python ./report-to-slack/payload_modify.py
+        python payload_modify.py
       shell: bash
             
     - name: send to payload to slack
