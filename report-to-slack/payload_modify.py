@@ -3,7 +3,7 @@ import sys
 import os
 import re
 
-print(os.environ.items())
+print(os.environ)
 
 def is_camel_case(text):
     pattern = r'^[a-zA-Z]+(\s+[a-zA-Z]+)*$'
