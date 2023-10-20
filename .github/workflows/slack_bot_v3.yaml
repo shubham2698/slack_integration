@@ -40,3 +40,17 @@ jobs:
             FALLBACK: "Hawkeye Core GHA Test"
             HEADER_TEXT: "Hawkeye Core GHA Test"
             SLACK_GITHUB_AUTHOR: "${{ github.actor }}"
+
+        - name: send to payload to slack
+          uses: ./report-to-slack-bash
+          with:
+            channel-id: "C06168TBVT8"
+            slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          env:
+            COLOR_CODE: "#FF0000"
+            SLACK_GITHUB_ACTION_WORKFLOW_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            SLACK_TEST_REPORT: "TBD"
+            SLACK_GITHUB_BRANCH: "${{ github.ref_name }}"
+            FALLBACK: "Hawkeye Core GHA Test"
+            HEADER_TEXT: "Hawkeye Core GHA Test"
+            SLACK_GITHUB_AUTHOR: "${{ github.actor }}"
