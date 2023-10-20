@@ -1,23 +1,11 @@
 name: 'send-slack-notification'
 description: 'use this for sending json payload as notification to slack'
 inputs:
-  payload-file-path:
-    description: 'Input environment variable'
-    required: false
   channel-id:
     description: 'Input channel id'
     required: true
   slack-bot-token:
     description: 'Slack bot token'
-    required: true
-  github_repository:
-    description: 'Input github repository'
-    required: true
-  github_branch:
-    description: 'Input github branch'
-    required: true
-  github_run_id:
-    description: 'Input github branch'
     required: true
 
 runs:
@@ -25,6 +13,7 @@ runs:
   steps:
 
     - name: payload modify scripy
+      working-directory: ${{ github.action_path }}
       run: |
         python ./report-to-slack/payload_modify.py
       shell: bash
@@ -32,7 +21,7 @@ runs:
     - name: send to payload to slack
       uses: slackapi/slack-github-action@v1.24.0
       with:
-        payload-file-path: "./payload.json"
+        payload-file-path: "${{ github.action_path }}/payload.json"
         channel-id: ${{ inputs.channel-id }}
       env:
         SLACK_BOT_TOKEN: ${{ inputs.slack-bot-token }}
