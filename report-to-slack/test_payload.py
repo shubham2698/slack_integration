@@ -1,5 +1,6 @@
 import os
 
-env_file = os.getenv('GITHUB_ENV')
+print("Script Execution Started")
+env_file = os.getenv()
 
 print(env_file)
