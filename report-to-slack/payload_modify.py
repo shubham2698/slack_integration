@@ -6,15 +6,16 @@ import re
 json_file_path = "payload.json"
 data = {}
 payload = {
+    "fallback": f"{os.environ.get('FALLBACK')}",
     "attachments": [
         {
-            "color": f"#FF0000",
+            "color": f"{os.environ.get('COLOR_CODE')}",
             "blocks": [
                 {
                     "type": "header",
                     "text": {
                         "type": "plain_text",
-                        "text": "Unit Test Result (hard-coded)"
+                        "text": f"{os.environ.get('HEADER_TEXT')}"
                     }
                 },
                 {
