@@ -1,10 +1,10 @@
 import json
-import sys
 import os
-import re
 
 json_file_path = "payload.json"
 data = {}
+prefix = "SLACK_"
+len_prefix = len(prefix)
 payload = {
     "fallback": f"{os.environ.get('FALLBACK')}",
     "attachments": [
@@ -28,8 +28,8 @@ payload = {
 
 
 for key, value in os.environ.items():
-    if key.startswith('SLACK_'):
-        key=key[len("SLACK_"):].replace("_"," ")
+    if key.startswith(prefix):
+        key=key[len_prefix:].replace("_"," ")
         data[key] = value
 
 data = {key: value for key, value in reversed(data.items())}
