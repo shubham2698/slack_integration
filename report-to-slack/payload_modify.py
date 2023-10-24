@@ -45,7 +45,7 @@ for key, value in data.items():
                 "type": "mrkdwn",
                 "text": f"*{key}*\n{value}"
             }
-    payload["attachments"][2]["fields"].append(section)
+    payload["attachments"][0]["blocks"][2]["fields"].append(section)
 
 with open(json_file_path, 'w') as json_file:
     json.dump(payload, json_file, indent=4)
