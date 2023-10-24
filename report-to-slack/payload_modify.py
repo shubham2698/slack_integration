@@ -20,6 +20,11 @@ payload = {
                 },
                 {
                     "type": "divider"
+                },
+                {
+                    "type": "section",
+                    "fields": [
+                    ]
                 }
             ]
         }
@@ -36,15 +41,11 @@ data = {key: value for key, value in reversed(data.items())}
 
 for key, value in data.items():
     section = {
-        "type": "section",
-        "fields": [
-            {
+
                 "type": "mrkdwn",
                 "text": f"*{key}*\n{value}"
             }
-        ]
-    }
-    payload["attachments"][0]["blocks"].append(section)
+    payload["attachments"][2]["fields"].append(section)
 
 with open(json_file_path, 'w') as json_file:
     json.dump(payload, json_file, indent=4)
